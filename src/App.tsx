@@ -83,56 +83,82 @@ function App() {
           </div>
         </section>
 
-        {/* Employment history with all entries */}
+        {/* Employment history as vertical timeline */}
         <section className="mt-6 rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
-          <h2 className="text-lg font-semibold">💼 Employment History</h2>
-          <div className="mt-4 space-y-6 text-sm leading-6">
-            <div>
-              <div className="font-medium">Instabee — Full Stack Developer 📦🐝</div>
-              <div className="text-gray-600">2025 – current, Stockholm</div>
-              <ul className="mt-2 list-inside list-disc text-gray-700">
-                <li>🛠️ Internal tools for device fleet monitoring and management.</li>
-                <li>🧱 Backend APIs supporting core business services.</li>
-                <li>🗺️ Geospatial services ahead of new market launch.</li>
-                <li>🔒 Prototyped next‑gen parcel locker hardware & software.</li>
-                <li>🧠 R&D on AI-powered analytics and AI-assisted dev practices.</li>
-              </ul>
+          <h2 className="text-lg font-semibold">🖖 My journey</h2>
+          <div className="relative mt-6">
+            <div className="pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-2 rounded-full bg-gray-200 md:w-3" />
+
+            {/* Instabee (Left) */}
+            <div className="relative md:grid md:grid-cols-2 md:gap-8">
+              <div className="md:col-span-1 md:pr-10 text-right">
+                <div className="text-xs font-semibold text-gray-400">2025 – current</div>
+                <div className="font-medium">Instabee — Full Stack Developer 📦🐝</div>
+                <ul className="mt-2 inline-block text-left list-inside list-disc text-gray-700">
+                  <li>Internal tools for device fleet monitoring and management.</li>
+                  <li>Backend APIs supporting core business services.</li>
+                  <li>Geospatial services ahead of new market launch.</li>
+                  <li>Prototyped next‑gen parcel locker hardware & software.</li>
+                  <li>R&D on AI analytics and AI-assisted dev practices.</li>
+                </ul>
+              </div>
+              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-emerald-500 ring-4 ring-white shadow" />
             </div>
-            <div>
-              <div className="font-medium">NextML — Full Stack Developer 🧠📈</div>
-              <div className="text-gray-600">2023 – 2025, Stockholm</div>
-              <ul className="mt-2 list-inside list-disc text-gray-700">
-                <li>🧠 UI for AI-based track damage detection product.</li>
-                <li>⚡ Web maps (Leaflet/Mapbox), WebGL, and performance work.</li>
-                <li>🧪 Extensive refactoring and rapid prototyping.</li>
-              </ul>
+
+            {/* NextML (Right) */}
+            <div className="relative mt-10 md:grid md:grid-cols-2 md:gap-8">
+              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white shadow" />
+              <div className="md:col-start-2 md:pl-10">
+                <div className="text-xs font-semibold text-gray-400">2023 – 2025</div>
+                <div className="font-medium">NextML — Full Stack Developer 🧠📈</div>
+                <ul className="mt-2 list-inside list-disc text-gray-700">
+                  <li>UI for AI-based track damage detection product.</li>
+                  <li>Web maps (Leaflet/Mapbox), WebGL, performance optimizations.</li>
+                  <li>Extensive refactoring and rapid prototyping.</li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <div className="font-medium">Ombori Apps — Head of R&D 🧪🔬</div>
-              <div className="text-gray-600">2017 – 2023, Stockholm</div>
-              <ul className="mt-2 list-inside list-disc text-gray-700">
-                <li>🔌 Edge IoT platform and custom Linux-based OS.</li>
-                <li>🧩 Hardware integrations (3D cameras, printers, RFID/NFC, Bluetooth, GPIO).</li>
-                <li>🧠 Computer vision solutions (face detection/recognition).</li>
-                <li>🎛️ Interactive apps with 3D/graphics, TTS, speech & image recognition.</li>
-              </ul>
+
+            {/* Ombori (Left) */}
+            <div className="relative mt-10 md:grid md:grid-cols-2 md:gap-8">
+              <div className="md:col-span-1 md:pr-10 text-right">
+                <div className="text-xs font-semibold text-gray-400">2017 – 2023</div>
+                <div className="font-medium">Ombori Apps — Head of R&D 🧪🔬</div>
+                <ul className="mt-2 inline-block text-left list-inside list-disc text-gray-700">
+                  <li>Edge IoT platform and custom Linux-based OS.</li>
+                  <li>Hardware integrations (3D cameras, printers, RFID/NFC, Bluetooth, GPIO).</li>
+                  <li>Computer vision solutions (face detection/recognition).</li>
+                  <li>Interactive apps with 3D/graphics, TTS, speech & image recognition.</li>
+                </ul>
+              </div>
+              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-amber-500 ring-4 ring-white shadow" />
             </div>
-            <div>
-              <div className="font-medium">Nordnet — Mobile & Web Developer 📱🕸️</div>
-              <div className="text-gray-600">2018 – 2020, Stockholm</div>
-              <ul className="mt-2 list-inside list-disc text-gray-700">
-                <li>📱 Contributed to stock trading & savings mobile app.</li>
-                <li>🧱 Built a new web UI component library and key portal sections.</li>
-              </ul>
+
+            {/* Nordnet (Right) */}
+            <div className="relative mt-10 md:grid md:grid-cols-2 md:gap-8">
+              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-sky-500 ring-4 ring-white shadow" />
+              <div className="md:col-start-2 md:pl-10">
+                <div className="text-xs font-semibold text-gray-400">2018 – 2020</div>
+                <div className="font-medium">Nordnet — Mobile & Web Developer 📱🕸️</div>
+                <ul className="mt-2 list-inside list-disc text-gray-700">
+                  <li>Contributed to stock trading & savings mobile app.</li>
+                  <li>Built a new web UI component library and key portal sections.</li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <div className="font-medium">Areal — Head of Software Development 🧭</div>
-              <div className="text-gray-600">2005 – 2017, Yaroslavl</div>
-              <ul className="mt-2 list-inside list-disc text-gray-700">
-                <li>🛰️ Internet access gateway solutions for the ex‑USSR market.</li>
-                <li>🧭 Full‑stack development, project leadership, and PM.</li>
-                <li>🌐 Networking tech, FreeBSD, Node.js, JavaScript, IP telephony.</li>
-              </ul>
+
+            {/* Areal (Left) */}
+            <div className="relative mt-10 md:grid md:grid-cols-2 md:gap-8">
+              <div className="md:col-span-1 md:pr-10 text-right">
+                <div className="text-xs font-semibold text-gray-400">2005 – 2017</div>
+                <div className="font-medium">Areal — Head of Software Development 🧭</div>
+                <ul className="mt-2 inline-block text-left list-inside list-disc text-gray-700">
+                  <li>Internet access gateway solutions for the ex‑USSR market.</li>
+                  <li>Full‑stack development, project leadership, and PM.</li>
+                  <li>Networking tech, FreeBSD, Node.js, JavaScript, IP telephony.</li>
+                </ul>
+              </div>
+              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-rose-500 ring-4 ring-white shadow" />
             </div>
           </div>
         </section>
