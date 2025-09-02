@@ -1,13 +1,14 @@
 import { FaEnvelope, FaGithub, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
 function App() {
+  const base = import.meta.env.BASE_URL;
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
       <main className="mx-auto max-w-3xl p-6">
         <section className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
             <img
-              src="/photo.jpeg"
+              src={base + "photo.jpeg"}
               alt="Alexey Guskov"
               className="h-28 w-28 rounded-full object-cover ring-2 ring-gray-200"
             />
@@ -43,7 +44,7 @@ function App() {
                   <FaGithub /> GitHub
                 </a>
                 <a
-                  href="/cv-guskov-2025.pdf"
+                  href={base + "cv-guskov-2025.pdf"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-50"
