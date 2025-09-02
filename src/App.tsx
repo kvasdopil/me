@@ -20,8 +20,7 @@ function App() {
           count is {count}
         </button>
         <p className="text-sm text-gray-600">
-          Edit <code className="font-mono">src/App.tsx</code> and save to test
-          HMR
+          Edit <code className="font-mono">src/App.tsx</code> and save to test HMR
         </p>
       </div>
     </div>
