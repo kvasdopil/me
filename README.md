@@ -2,6 +2,25 @@
 
 Hosted via GitHub Pages.
 
+### Homepage
+
+The front page is a static profile built in `src/App.tsx` that shows:
+
+- Name, title, location, email, and phone
+- Profile photo from `public/photo.jpeg`
+- Link to GitHub profile
+- Link to CV PDF at `public/cv-guskov-2025.pdf`
+
+Update content by editing `src/App.tsx`. Replace assets by updating the files in `public/` with the same names or adjust the filenames and links accordingly.
+
+Asset paths should respect the Vite base path (GitHub Pages serves under `/<repo>/`). In components, prefer prefixing public assets with `import.meta.env.BASE_URL`:
+
+```tsx
+const base = import.meta.env.BASE_URL;
+<img src={base + "photo.jpeg"} alt="Photo" />
+<a href={base + "cv-guskov-2025.pdf"} target="_blank" rel="noreferrer">Download CV</a>
+```
+
 ### Stack
 
 - **Build**: Vite + React + TypeScript
