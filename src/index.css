@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased leading-relaxed;
+  }
+  p {
+    @apply leading-7;
+  }
+  ul, ol {
+    @apply mt-2 space-y-2;
+  }
+}
