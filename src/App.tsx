@@ -14,7 +14,7 @@ function App() {
             />
             <div className="flex-1">
               <h1 className="text-3xl font-semibold tracking-tight">Alexey Guskov 🚀</h1>
-              <p className="mt-2 text-base text-gray-700">
+              <div className="mt-2 text-base text-gray-700">
                 <ul className="flex flex-wrap gap-3 text-sm">
                   <li>Full Stack</li>
                   <li>Mobile</li>
@@ -23,7 +23,7 @@ function App() {
                   <li>AI fanboy</li>
                   <li>🤖🛰️📱💻</li>
                 </ul>
-              </p>
+              </div>
               <p className="mt-2 text-base text-gray-700">
                 Hi there, I'm Alex! For me, building software for the last 20 years has been about
                 one thing: creative problem-solving. I connect the dots between IoT, mobile, AI, and
