@@ -1,5 +1,3 @@
-import React from "react";
-
 export type TagProps = {
   label: string;
   className?: string;
@@ -7,7 +5,7 @@ export type TagProps = {
 
 export default function Tag({ label, className }: TagProps) {
   const baseClass =
-    "inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700 ring-1 ring-gray-200 shadow-sm";
+    "inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700 shadow-sm";
   const combined = className ? `${baseClass} ${className}` : baseClass;
   return <span className={combined}>{label}</span>;
 }

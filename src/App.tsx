@@ -32,7 +32,7 @@ function TimelineItem({ item, addTopMargin }: { item: TimelineItemData; addTopMa
   const lineClass = item.colorClass;
 
   const contentLeft = (
-    <div className="md:col-span-1 md:pr-12 text-right">
+    <div className="pl-10 md:pl-0 md:col-span-1 md:pr-12 text-left md:text-right">
       <div className="text-xs font-semibold text-gray-400">{item.period}</div>
       <div className="font-medium">{item.title}</div>
       {item.description ? (
@@ -57,7 +57,7 @@ function TimelineItem({ item, addTopMargin }: { item: TimelineItemData; addTopMa
   );
 
   const contentRight = (
-    <div className="md:col-start-2 md:pl-12">
+    <div className="pl-10 md:pl-12 md:col-start-2">
       <div className="text-xs font-semibold text-gray-400">{item.period}</div>
       <div className="font-medium">{item.title}</div>
       {item.description ? (
@@ -84,16 +84,16 @@ function TimelineItem({ item, addTopMargin }: { item: TimelineItemData; addTopMa
   return (
     <div className={containerClass}>
       <span
-        className={`absolute left-1/2 -translate-x-1/2 top-7 ${lineBottomClass} w-2 md:w-3 rounded-full ${lineClass} z-10`}
+        className={`absolute left-1 md:left-1/2 md:-translate-x-1/2 top-7 ${lineBottomClass} w-2 md:w-3 rounded-full ${lineClass} z-10`}
       />
       {item.side === "left" ? contentLeft : contentRight}
       {item.badgeAboveDot ? (
-        <span className="absolute left-1/2 -translate-x-1/2 top-2 -translate-y-8 rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-600 z-30 shadow-sm">
+        <span className="absolute ml-[-25px] md:ml-0 md:left-1/2 md:-translate-x-1/2 top-0 rounded-r-full -translate-y-8 md:rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-600 z-30 shadow-sm">
           {item.badgeAboveDot}
         </span>
       ) : null}
       <span
-        className={`absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full ${dotClass} ring-4 ring-white z-20`}
+        className={`absolute left-.65 md:left-1/2 md:-translate-x-1/2 top-3 h-4 w-4 rounded-full ${dotClass} ring-4 ring-white z-20`}
       />
     </div>
   );
@@ -364,7 +364,7 @@ function App() {
         <section className="mt-8">
           <h2 className="text-xl font-semibold tracking-tight">🖖 My journey</h2>
           <div className="relative mt-7">
-            <div className="pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-2 md:w-3 z-0" />
+            <div className="pointer-events-none absolute inset-y-0 md:left-1/2 md:-translate-x-1/2 w-2 md:w-3 z-0" />
             {timeline.map((t, idx) => (
               <TimelineItem key={t.title} item={t} addTopMargin={idx !== 0} />
             ))}
@@ -374,9 +374,10 @@ function App() {
         <section className="mt-8 grid gap-7 md:grid-cols-2">
           <div>
             <h2 className="text-xl font-semibold tracking-tight">🎓 Education</h2>
-            <p className="mt-3 text-base text-gray-700">
-              Yaroslavl State University — Master of Computer Science (2003–2008)
-            </p>
+            <div className="mt-3 text-base text-gray-700">
+              <div className="text-xs font-semibold text-gray-400">2003 - 2008</div>
+              Yaroslavl State University — Master of Computer Science
+            </div>
           </div>
           <div>
             <h2 className="text-xl font-semibold tracking-tight">🗣️ Languages</h2>
