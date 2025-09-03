@@ -81,3 +81,14 @@ Notes:
 
 - Vite `base` is configured in `vite.config.ts` to read `process.env.BASE_PATH` (defaults to `/`).
 - The workflow sets `BASE_PATH=/${{ github.event.repository.name }}/` for correct asset paths on Pages.
+
+## Ideas
+
+- more data, more texts
+- need to make it more fun and stand out
+  - nice and beautiful timeline, showing all my projects, hobbies, telling more about projects i've been working on (screenshots, links)
+  - integrate a little game or smth
+  - nice hires photo or image to get attention
+  - something really nice, like 3d graphics
+- mobile version!
+- pure terminal-like text website with emojis, super nerdy stuff!

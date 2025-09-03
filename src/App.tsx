@@ -15,7 +15,12 @@ function App() {
             <div className="flex-1">
               <h1 className="text-2xl font-semibold">Alexey Guskov 🚀</h1>
               <p className="mt-1 text-gray-700">
-                IoT / Embedded Linux / Mobile / Full Stack Developer 🤖🛰️📱💻
+                Full Stack / Mobile / IoT / Embedded Linux Developer / AI fanboy 🤖🛰️📱💻
+              </p>
+              <p className="mt-2 text-sm text-gray-700">
+                For me, building software for the last 20 years has been about one thing: creative
+                problem-solving. I connect the dots between IoT, mobile, AI, and backend to turn
+                "what if" ideas into real-world products, working efficiently through the unknowns.
               </p>
               <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-gray-700">
                 <span className="inline-flex items-center gap-1">
@@ -61,24 +66,42 @@ function App() {
           <h2 className="text-lg font-semibold">🛠️ Skills</h2>
           <div className="mt-4 space-y-3 text-sm text-gray-700">
             <div>
-              <span className="font-medium">🎨 Frontend & Mobile:</span> React, React Native, Expo,
-              Next.js, Redux, Jest, Storybook, Websockets
+              <span className="font-medium">🎨 Frontend & Mobile:</span> Typescript, React, React
+              Native, Expo, Next.js, Vite, Redux, React Query, React Navigation, Jest, Playwright,
+              Storybook, Yjs CRDT, Tailwind, styled components, Websockets
             </div>
             <div>
-              <span className="font-medium">🧰 Backend:</span> Node.js, Go, Express.js, MongoDB,
-              Redis, MySQL, PostgreSQL, OAuth
+              <span className="font-medium">🧰 Backend:</span> Node.js, Python, FastAPI, Go,
+              Express.js, MongoDB, Redis, MySQL, PostgreSQL, OAuth, gRPC, Protobuf, Websockets,
+              RabbitMQ, JWT
             </div>
             <div>
               <span className="font-medium">🔌 IoT & Embedded:</span> Embedded Linux, Yocto, Azure
-              IoT Edge, ARM, RPI, U-boot, Chromium, Electron, GPIO, MQTT, Bluetooth
+              IoT Edge, Ubuntu Core, ARM, RPI, Rockchip, NXP, U-boot, OTA, Chromium, Electron, Linux
+              kernel, MDNS, UART, GPIO, SPI, MQTT, NPU, Bluetooth, CAN, Modbus, ROS2, ESP32, C++, C
             </div>
             <div>
-              <span className="font-medium">🧪 AI & Data:</span> Python, OpenCV, Numpy, Tensorflow,
-              Jupyter
+              <span className="font-medium">🧪 AI & Data:</span> Python, OpenCV, Numpy, Pillow,
+              Tensorflow, Jupyter, Pyodide, AI-sdk, Cursor/Claude code, MCP development, context
+              engineering, spec-based development, LangChain
             </div>
             <div>
-              <span className="font-medium">☁️ DevOps & Cloud:</span> Docker, Kubernetes, Terraform,
-              Azure, AWS, GCP, GitHub Actions
+              <span className="font-medium">🗺️ Geospatial:</span> OSM, MapboxGL, Maplibre, Here
+            </div>
+            <div>
+              <span className="font-medium">🎮 Graphics & XR:</span> Three.js, Drei, WebGL, GLSL,
+              OpenXR, Oculus SDK, Unity, Blender, AR/VR, C#
+            </div>
+            <div>
+              <span className="font-medium">☁️ DevOps & Cloud:</span> Docker, Terraform, Helm, K8S,
+              Azure, AWS, GCP, Serverless, GitHub Actions, Grafana
+            </div>
+            <div>
+              <span className="font-medium">🌐 Networking:</span> Linux, FreeBSD, VPN, Ip-telephony,
+              IPv6
+            </div>
+            <div>
+              <span className="font-medium">🧩 Other:</span> Design systems, 3D graphics & modeling
             </div>
           </div>
         </section>
@@ -95,11 +118,19 @@ function App() {
                 <div className="text-xs font-semibold text-gray-400">2025 – current</div>
                 <div className="font-medium">Instabee — Full Stack Developer 📦🐝</div>
                 <ul className="mt-2 inline-block text-left list-inside list-disc text-gray-700">
-                  <li>Internal tools for device fleet monitoring and management.</li>
-                  <li>Backend APIs supporting core business services.</li>
-                  <li>Geospatial services ahead of new market launch.</li>
-                  <li>Prototyped next‑gen parcel locker hardware & software.</li>
-                  <li>R&D on AI analytics and AI-assisted dev practices.</li>
+                  <li>
+                    Built and maintained internal tools for device fleet monitoring and management.
+                  </li>
+                  <li>Developed and optimized backend APIs supporting core business services.</li>
+                  <li>
+                    Expanded and optimized geospatial services ahead of launch in a new market.
+                  </li>
+                  <li>Prototyped hardware and software for next‑gen parcel locker platform.</li>
+                  <li>
+                    Researched and developed AI-powered analytics tools for operational insights.
+                  </li>
+                  <li>Advocated AI-assisted development practices company-wide.</li>
+                  <li>Self‑proclaimed AI‑ambassador and MVP fanboy.</li>
                 </ul>
               </div>
               <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-emerald-500 ring-4 ring-white shadow" />
