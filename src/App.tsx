@@ -1,7 +1,220 @@
 import { FaEnvelope, FaGithub, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
+type TimelineSide = "left" | "right";
+
+type TimelineItemData = {
+  side: TimelineSide;
+  colorClass: string; // Tailwind color class like "bg-emerald-500"
+  period: string;
+  title: string;
+  description?: string;
+  startup?: boolean;
+  bullets: string[];
+  isLast?: boolean;
+  badgeAboveDot?: string;
+};
+
+function StartupBadge() {
+  return (
+    <span className="mr-2 rounded-full px-2 bg-red-100 py-0.5 text-xs font-medium text-red-500 align-middle">
+      🚀&nbsp;startup
+    </span>
+  );
+}
+
+function TimelineItem({ item, addTopMargin }: { item: TimelineItemData; addTopMargin?: boolean }) {
+  const containerBase = "relative md:grid md:grid-cols-2 md:gap-10";
+  const containerClass = addTopMargin ? `${containerBase} mt-12` : containerBase;
+  const lineBottomClass = item.isLast ? "-bottom-0" : "-bottom-18";
+  const dotClass = item.colorClass;
+  const lineClass = item.colorClass;
+
+  const contentLeft = (
+    <div className="md:col-span-1 md:pr-12 text-right">
+      <div className="text-xs font-semibold text-gray-400">{item.period}</div>
+      <div className="font-medium">{item.title}</div>
+      {item.description ? (
+        <div className="mt-1 text-sm text-gray-600">
+          {item.startup ? <StartupBadge /> : null}
+          {item.description}
+        </div>
+      ) : null}
+      <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
+        {item.bullets.map((b, i) => (
+          <li key={i}>{b}</li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  const contentRight = (
+    <div className="md:col-start-2 md:pl-12">
+      <div className="text-xs font-semibold text-gray-400">{item.period}</div>
+      <div className="font-medium">{item.title}</div>
+      {item.description ? (
+        <div className="mt-1 text-sm text-gray-600">
+          {item.startup ? <StartupBadge /> : null}
+          {item.description}
+        </div>
+      ) : null}
+      <ul className="mt-3 list-inside list-disc text-gray-700">
+        {item.bullets.map((b, i) => (
+          <li key={i}>{b}</li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  return (
+    <div className={containerClass}>
+      <span
+        className={`absolute left-1/2 -translate-x-1/2 top-7 ${lineBottomClass} w-2 md:w-3 rounded-full ${lineClass} z-10`}
+      />
+      {item.side === "left" ? contentLeft : contentRight}
+      {item.badgeAboveDot ? (
+        <span className="absolute left-1/2 -translate-x-1/2 top-2 -translate-y-8 rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-600 z-30 shadow-sm">
+          {item.badgeAboveDot}
+        </span>
+      ) : null}
+      <span
+        className={`absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full ${dotClass} ring-4 ring-white z-20`}
+      />
+    </div>
+  );
+}
+
 function App() {
   const base = import.meta.env.BASE_URL;
+  const roles: string[] = [
+    "Full Stack",
+    "Mobile",
+    "IoT",
+    "Embedded Linux Developer",
+    "AI fanboy",
+    "🤖🛰️📱💻",
+  ];
+
+  const skills: { label: string; value: string }[] = [
+    {
+      label: "🎨 Frontend & Mobile:",
+      value:
+        "Typescript, React, React Native, Expo, Next.js, Vite, Redux, React Query, React Navigation, Jest, Playwright, Storybook, Yjs CRDT, Tailwind, styled components, Websockets",
+    },
+    {
+      label: "🧰 Backend:",
+      value:
+        "Node.js, Python, FastAPI, Go, Express.js, MongoDB, Redis, MySQL, PostgreSQL, OAuth, gRPC, Protobuf, Websockets, RabbitMQ, JWT",
+    },
+    {
+      label: "🔌 IoT & Embedded:",
+      value:
+        "Embedded Linux, Yocto, Azure IoT Edge, Ubuntu Core, ARM, RPI, Rockchip, NXP, U-boot, OTA, Chromium, Electron, Linux kernel, MDNS, UART, GPIO, SPI, MQTT, NPU, Bluetooth, CAN, Modbus, ROS2, ESP32, C++, C",
+    },
+    {
+      label: "🧪 AI & Data:",
+      value:
+        "Python, OpenCV, Numpy, Pillow, Tensorflow, Jupyter, Pyodide, AI-sdk, Cursor/Claude code, MCP development, context engineering, spec-based development, LangChain",
+    },
+    { label: "🗺️ Geospatial:", value: "OSM, MapboxGL, Maplibre, Here" },
+    {
+      label: "🎮 Graphics & XR:",
+      value: "Three.js, Drei, WebGL, GLSL, OpenXR, Oculus SDK, Unity, Blender, AR/VR, C#",
+    },
+    {
+      label: "☁️ DevOps & Cloud:",
+      value: "Docker, Terraform, Helm, K8S, Azure, AWS, GCP, Serverless, GitHub Actions, Grafana",
+    },
+    { label: "🌐 Networking:", value: "Linux, FreeBSD, VPN, Ip-telephony, IPv6" },
+    { label: "🧩 Other:", value: "Design systems, 3D graphics & modeling" },
+  ];
+
+  const timeline: TimelineItemData[] = [
+    {
+      side: "left",
+      colorClass: "bg-emerald-500",
+      period: "2025 – current",
+      title: "Instabee — Full Stack Developer 📦🐝",
+      description: "Parcel delivery to lockers. Best and biggest in Nordics.",
+      bullets: [
+        "Built and maintained internal tools for device fleet monitoring and management.",
+        "Developed and optimized backend APIs supporting core business services.",
+        "Expanded and optimized geospatial services ahead of launch in a new market.",
+        "Prototyped hardware and software for next‑gen parcel locker platform.",
+        "Researched and developed AI-powered analytics tools for operational insights.",
+        "Advocated AI-assisted development practices company-wide.",
+        "Self‑proclaimed AI‑ambassador and MVP fanboy.",
+      ],
+    },
+    {
+      side: "right",
+      colorClass: "bg-indigo-500",
+      period: "2023 – 2025",
+      title: "NextML — Full Stack Developer 🧠📈",
+      description:
+        "A solution to automate inspection of railroad track and wire using computer vision and machine-learning.",
+      startup: true,
+      bullets: [
+        "UI for AI-based track damage detection product.",
+        "Web maps (Leaflet/Mapbox), WebGL, performance optimizations.",
+        "Extensive refactoring and rapid prototyping.",
+      ],
+    },
+    {
+      side: "left",
+      colorClass: "bg-amber-500",
+      period: "2017 – 2023",
+      title: "Ombori Apps — Head of R&D 🧪🔬",
+      description: "Interactive digital solutions for retail.",
+      startup: true,
+      bullets: [
+        "Edge IoT platform and custom Linux-based OS.",
+        "Hardware integrations (3D cameras, printers, RFID/NFC, Bluetooth, GPIO).",
+        "Computer vision solutions (face detection/recognition).",
+        "Interactive apps with 3D/graphics, TTS, speech & image recognition.",
+      ],
+    },
+    {
+      side: "right",
+      colorClass: "bg-sky-500",
+      period: "2018 – 2020",
+      title: "Nordnet — Mobile & Web Developer 📱🕸️",
+      description: "Stock trading and savings application for web and mobile.",
+      bullets: [
+        "Contributed to stock trading & savings mobile app ahead of launch.",
+        "Built a new web UI component library and key portal sections.",
+      ],
+    },
+    {
+      side: "left",
+      colorClass: "bg-rose-500",
+      period: "2005 – 2017",
+      title: "Areal — Head of Software Development 🧭",
+      description:
+        "Multi-purpose solution to automate system administrators' work. A firewall, proxy, ACL, mail server, telephony, VPN, in a nice all-in-one package with a simple UI.",
+      startup: true,
+      badgeAboveDot: "Moved to 🇸🇪 Sweden",
+      bullets: [
+        "Internet access gateway solutions for the ex‑USSR market.",
+        "Full‑stack development, project leadership, and PM.",
+        "Networking tech, FreeBSD, Node.js, JavaScript, IP telephony.",
+      ],
+      isLast: true,
+    },
+  ];
+
+  const languages: { emoji: string; label: string; level: string }[] = [
+    { emoji: "🇬🇧", label: "English", level: "fluent" },
+    { emoji: "🇸🇪", label: "Swedish", level: "basic" },
+  ];
+
+  const hobbies: { label: string; emoji: string }[] = [
+    { label: "DIY", emoji: "🛠️" },
+    { label: "3D Printing", emoji: "🧱" },
+    { label: "XR", emoji: "🥽" },
+    { label: "Robotics", emoji: "🤖" },
+    { label: "Gamedev", emoji: "🎮" },
+    { label: "Music", emoji: "🎵" },
+  ];
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
       <main className="mx-auto max-w-4xl px-6 py-10 md:py-12">
@@ -13,15 +226,12 @@ function App() {
               className="h-48 w-48 rounded-full object-cover shadow-md"
             />
             <div className="flex-1">
-              <h1 className="text-3xl font-semibold tracking-tight">Alexey Guskov 🚀</h1>
+              <h1 className="text-3xl font-semibold tracking-tight">Alexey Guskov 🦸‍♂️</h1>
               <div className="mt-2 text-base text-gray-700">
                 <ul className="flex flex-wrap gap-3 text-sm">
-                  <li>Full Stack</li>
-                  <li>Mobile</li>
-                  <li>IoT</li>
-                  <li>Embedded Linux Developer</li>
-                  <li>AI fanboy</li>
-                  <li>🤖🛰️📱💻</li>
+                  {roles.map((r) => (
+                    <li key={r}>{r}</li>
+                  ))}
                 </ul>
               </div>
               <p className="mt-2 text-base text-gray-700">
@@ -73,44 +283,11 @@ function App() {
         <section className="mt-8">
           <h2 className="text-xl font-semibold tracking-tight">🛠️ Skills</h2>
           <div className="mt-5 space-y-3.5 text-[15px] text-gray-700">
-            <div>
-              <span className="font-medium">🎨 Frontend & Mobile:</span> Typescript, React, React
-              Native, Expo, Next.js, Vite, Redux, React Query, React Navigation, Jest, Playwright,
-              Storybook, Yjs CRDT, Tailwind, styled components, Websockets
-            </div>
-            <div>
-              <span className="font-medium">🧰 Backend:</span> Node.js, Python, FastAPI, Go,
-              Express.js, MongoDB, Redis, MySQL, PostgreSQL, OAuth, gRPC, Protobuf, Websockets,
-              RabbitMQ, JWT
-            </div>
-            <div>
-              <span className="font-medium">🔌 IoT & Embedded:</span> Embedded Linux, Yocto, Azure
-              IoT Edge, Ubuntu Core, ARM, RPI, Rockchip, NXP, U-boot, OTA, Chromium, Electron, Linux
-              kernel, MDNS, UART, GPIO, SPI, MQTT, NPU, Bluetooth, CAN, Modbus, ROS2, ESP32, C++, C
-            </div>
-            <div>
-              <span className="font-medium">🧪 AI & Data:</span> Python, OpenCV, Numpy, Pillow,
-              Tensorflow, Jupyter, Pyodide, AI-sdk, Cursor/Claude code, MCP development, context
-              engineering, spec-based development, LangChain
-            </div>
-            <div>
-              <span className="font-medium">🗺️ Geospatial:</span> OSM, MapboxGL, Maplibre, Here
-            </div>
-            <div>
-              <span className="font-medium">🎮 Graphics & XR:</span> Three.js, Drei, WebGL, GLSL,
-              OpenXR, Oculus SDK, Unity, Blender, AR/VR, C#
-            </div>
-            <div>
-              <span className="font-medium">☁️ DevOps & Cloud:</span> Docker, Terraform, Helm, K8S,
-              Azure, AWS, GCP, Serverless, GitHub Actions, Grafana
-            </div>
-            <div>
-              <span className="font-medium">🌐 Networking:</span> Linux, FreeBSD, VPN, Ip-telephony,
-              IPv6
-            </div>
-            <div>
-              <span className="font-medium">🧩 Other:</span> Design systems, 3D graphics & modeling
-            </div>
+            {skills.map((s) => (
+              <div key={s.label}>
+                <span className="font-medium">{s.label}</span> {s.value}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -119,91 +296,9 @@ function App() {
           <h2 className="text-xl font-semibold tracking-tight">🖖 My journey</h2>
           <div className="relative mt-7">
             <div className="pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-2 md:w-3 z-0" />
-
-            {/* Instabee (Left) */}
-            <div className="relative md:grid md:grid-cols-2 md:gap-10">
-              <span className="absolute left-1/2 -translate-x-1/2 top-7 -bottom-18 w-2 md:w-3 rounded-full bg-emerald-500 z-10" />
-              <div className="md:col-span-1 md:pr-12 text-right">
-                <div className="text-xs font-semibold text-gray-400">2025 – current</div>
-                <div className="font-medium">Instabee — Full Stack Developer 📦🐝</div>
-                <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
-                  <li>
-                    Built and maintained internal tools for device fleet monitoring and management.
-                  </li>
-                  <li>Developed and optimized backend APIs supporting core business services.</li>
-                  <li>
-                    Expanded and optimized geospatial services ahead of launch in a new market.
-                  </li>
-                  <li>Prototyped hardware and software for next‑gen parcel locker platform.</li>
-                  <li>
-                    Researched and developed AI-powered analytics tools for operational insights.
-                  </li>
-                  <li>Advocated AI-assisted development practices company-wide.</li>
-                  <li>Self‑proclaimed AI‑ambassador and MVP fanboy.</li>
-                </ul>
-              </div>
-              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-emerald-500 ring-4 ring-white z-20" />
-            </div>
-
-            {/* NextML (Right) */}
-            <div className="relative mt-12 md:grid md:grid-cols-2 md:gap-10">
-              <span className="absolute left-1/2 -translate-x-1/2 top-7 -bottom-18 w-2 md:w-3 rounded-full bg-indigo-500 z-10" />
-              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white z-20" />
-              <div className="md:col-start-2 md:pl-12">
-                <div className="text-xs font-semibold text-gray-400">2023 – 2025</div>
-                <div className="font-medium">NextML — Full Stack Developer 🧠📈</div>
-                <ul className="mt-3 list-inside list-disc text-gray-700">
-                  <li>UI for AI-based track damage detection product.</li>
-                  <li>Web maps (Leaflet/Mapbox), WebGL, performance optimizations.</li>
-                  <li>Extensive refactoring and rapid prototyping.</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Ombori (Left) */}
-            <div className="relative mt-12 md:grid md:grid-cols-2 md:gap-10">
-              <span className="absolute left-1/2 -translate-x-1/2 top-7 -bottom-18 w-2 md:w-3 rounded-full bg-amber-500 z-10" />
-              <div className="md:col-span-1 md:pr-12 text-right">
-                <div className="text-xs font-semibold text-gray-400">2017 – 2023</div>
-                <div className="font-medium">Ombori Apps — Head of R&D 🧪🔬</div>
-                <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
-                  <li>Edge IoT platform and custom Linux-based OS.</li>
-                  <li>Hardware integrations (3D cameras, printers, RFID/NFC, Bluetooth, GPIO).</li>
-                  <li>Computer vision solutions (face detection/recognition).</li>
-                  <li>Interactive apps with 3D/graphics, TTS, speech & image recognition.</li>
-                </ul>
-              </div>
-              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-amber-500 ring-4 ring-white z-20" />
-            </div>
-
-            {/* Nordnet (Right) */}
-            <div className="relative mt-12 md:grid md:grid-cols-2 md:gap-10">
-              <span className="absolute left-1/2 -translate-x-1/2 top-7 -bottom-18 w-2 md:w-3 rounded-full bg-sky-500 z-10" />
-              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-sky-500 ring-4 ring-white z-20" />
-              <div className="md:col-start-2 md:pl-12">
-                <div className="text-xs font-semibold text-gray-400">2018 – 2020</div>
-                <div className="font-medium">Nordnet — Mobile & Web Developer 📱🕸️</div>
-                <ul className="mt-3 list-inside list-disc text-gray-700">
-                  <li>Contributed to stock trading & savings mobile app.</li>
-                  <li>Built a new web UI component library and key portal sections.</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Areal (Left) */}
-            <div className="relative mt-12 md:grid md:grid-cols-2 md:gap-10">
-              <span className="absolute left-1/2 -translate-x-1/2 top-7 -bottom-0 w-2 md:w-3 rounded-full bg-rose-500 z-10" />
-              <div className="md:col-span-1 md:pr-12 text-right">
-                <div className="text-xs font-semibold text-gray-400">2005 – 2017</div>
-                <div className="font-medium">Areal — Head of Software Development 🧭</div>
-                <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
-                  <li>Internet access gateway solutions for the ex‑USSR market.</li>
-                  <li>Full‑stack development, project leadership, and PM.</li>
-                  <li>Networking tech, FreeBSD, Node.js, JavaScript, IP telephony.</li>
-                </ul>
-              </div>
-              <span className="absolute left-1/2 top-3 -translate-x-1/2 h-4 w-4 rounded-full bg-rose-500 ring-4 ring-white z-20" />
-            </div>
+            {timeline.map((t, idx) => (
+              <TimelineItem key={t.title} item={t} addTopMargin={idx !== 0} />
+            ))}
           </div>
         </section>
 
@@ -217,57 +312,28 @@ function App() {
           <div>
             <h2 className="text-xl font-semibold tracking-tight">🗣️ Languages</h2>
             <ul className="mt-3 text-base text-gray-700 list-none">
-              <li>
-                <span role="img" aria-label="UK flag" className="inline-block mr-1">
-                  🇬🇧
-                </span>
-                English — fluent
-              </li>
-              <li>
-                <span role="img" aria-label="Sweden flag" className="inline-block mr-1">
-                  🇸🇪
-                </span>
-                Swedish — basic
-              </li>
+              {languages.map((lng) => (
+                <li key={lng.label}>
+                  <span role="img" aria-label={`${lng.label} flag`} className="inline-block mr-1">
+                    {lng.emoji}
+                  </span>
+                  {lng.label} — {lng.level}
+                </li>
+              ))}
             </ul>
             <h2 className="mt-7 text-xl font-semibold tracking-tight">🎯 Hobbies</h2>
             <div className="mt-3 flex flex-wrap gap-2 text-base text-gray-700">
-              <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm">
-                DIY{" "}
-                <span role="img" aria-label="tools" className="ml-1">
-                  🛠️
+              {hobbies.map((h) => (
+                <span
+                  key={h.label}
+                  className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm"
+                >
+                  {h.label}{" "}
+                  <span role="img" aria-label={h.label} className="ml-1">
+                    {h.emoji}
+                  </span>
                 </span>
-              </span>
-              <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm">
-                3D Printing{" "}
-                <span role="img" aria-label="bricks" className="ml-1">
-                  🧱
-                </span>
-              </span>
-              <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm">
-                XR{" "}
-                <span role="img" aria-label="VR goggles" className="ml-1">
-                  🥽
-                </span>
-              </span>
-              <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm">
-                Robotics{" "}
-                <span role="img" aria-label="robot" className="ml-1">
-                  🤖
-                </span>
-              </span>
-              <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm">
-                Gamedev{" "}
-                <span role="img" aria-label="game controller" className="ml-1">
-                  🎮
-                </span>
-              </span>
-              <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm">
-                Music{" "}
-                <span role="img" aria-label="musical note" className="ml-1">
-                  🎵
-                </span>
-              </span>
+              ))}
             </div>
           </div>
         </section>

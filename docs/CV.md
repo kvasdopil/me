@@ -16,7 +16,7 @@ For me, building software for the last 20 years has been about one thing: creati
 
 **2025 – current**
 
-Parcel delivery to lockers.
+Parcel delivery to lockers. Best and biggest in Nordics.
 
 - Built and maintained internal tools for monitoring and managing a large device fleet.
 - Developed and optimized backend APIs supporting core business services.
