@@ -234,12 +234,29 @@ function App() {
                   ))}
                 </ul>
               </div>
-              <p className="mt-2 text-base text-gray-700">
-                Hi there, I'm Alex! For me, building software for the last 20 years has been about
-                one thing: creative problem-solving. I connect the dots between IoT, mobile, AI, and
-                backend to turn "what if" ideas into real-world products, working efficiently
-                through the unknowns.
-              </p>
+              <div className="mt-2 text-base text-gray-700 space-y-2">
+                <p>Hi there, I'm Alex!</p>
+                <p>
+                  For the last 20 years, my main drive has been&nbsp;
+                  <strong className="font-semibold">creative problem-solving</strong>. I love
+                  connecting the dots between different worlds like IoT, mobile, and AI, and turning
+                  a cool "what if"&nbsp;
+                  <strong className="font-semibold">idea into a real-world product</strong>.
+                </p>
+                <p>
+                  I'm at my best when tackling a tough challenge, whether that means architecting a
+                  new system from the ground up or&nbsp;
+                  <strong className="font-semibold">mentoring teammates</strong> on new tools that
+                  make everyone's workflow a little smoother.
+                </p>
+                <p>
+                  It all comes down to moving <strong className="font-semibold">fast</strong>,
+                  building&nbsp;
+                  <strong className="font-semibold">smart</strong>, and fostering a great
+                  environment where the&nbsp;
+                  <strong className="font-semibold">whole team</strong> can succeed.
+                </p>
+              </div>
               <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-gray-700">
                 <span className="inline-flex items-center gap-1">
                   <FaMapMarkerAlt className="text-gray-500" /> Stockholm, Sweden
