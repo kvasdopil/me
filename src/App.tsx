@@ -1,4 +1,5 @@
 import { FaEnvelope, FaGithub, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+import Tag from "./components/Tag";
 
 type TimelineSide = "left" | "right";
 
@@ -12,6 +13,7 @@ type TimelineItemData = {
   bullets: string[];
   isLast?: boolean;
   badgeAboveDot?: string;
+  tags?: string[];
 };
 
 function StartupBadge() {
@@ -44,6 +46,13 @@ function TimelineItem({ item, addTopMargin }: { item: TimelineItemData; addTopMa
           <li key={i}>{b}</li>
         ))}
       </ul>
+      {item.tags && item.tags.length ? (
+        <div className="mt-3 flex flex-wrap justify-end gap-2">
+          {item.tags.map((t) => (
+            <Tag key={t} label={t} />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 
@@ -62,6 +71,13 @@ function TimelineItem({ item, addTopMargin }: { item: TimelineItemData; addTopMa
           <li key={i}>{b}</li>
         ))}
       </ul>
+      {item.tags && item.tags.length ? (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {item.tags.map((t) => (
+            <Tag key={t} label={t} />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 
@@ -135,6 +151,17 @@ function App() {
       period: "2025 – current",
       title: "Instabee — Full Stack Developer 📦🐝",
       description: "Parcel delivery to lockers. Best and biggest in Nordics.",
+      tags: [
+        "React",
+        "TypeScript",
+        "Next.js",
+        "Go",
+        "K8S",
+        "Ai-sdk",
+        "Geospatial",
+        "IoT",
+        "Ubuntu Core",
+      ],
       bullets: [
         "Built and maintained internal tools for device fleet monitoring and management.",
         "Developed and optimized backend APIs supporting core business services.",
@@ -153,6 +180,7 @@ function App() {
       description:
         "A solution to automate inspection of railroad track and wire using computer vision and machine-learning.",
       startup: true,
+      tags: ["React", "TypeScript", "Leaflet", "Geospatial", "OpenStreetMap", "WebGL"],
       bullets: [
         "UI for AI-based track damage detection product.",
         "Web maps (Leaflet/Mapbox), WebGL, performance optimizations.",
@@ -166,8 +194,21 @@ function App() {
       title: "Ombori Apps — Head of R&D 🧪🔬",
       description: "Interactive digital solutions for retail.",
       startup: true,
+      tags: [
+        "React",
+        "Node.js",
+        "Azure",
+        "Azure IoT",
+        "Docker",
+        "MQTT",
+        "Linux",
+        "WebGL",
+        "Chromium development",
+        "Video codecs",
+      ],
       bullets: [
         "Edge IoT platform and custom Linux-based OS.",
+        "Suite of tools to manage, support and maintain the fleet of devices.",
         "Hardware integrations (3D cameras, printers, RFID/NFC, Bluetooth, GPIO).",
         "Computer vision solutions (face detection/recognition).",
         "Interactive apps with 3D/graphics, TTS, speech & image recognition.",
@@ -179,8 +220,18 @@ function App() {
       period: "2018 – 2020",
       title: "Nordnet — Mobile & Web Developer 📱🕸️",
       description: "Stock trading and savings application for web and mobile.",
+      tags: [
+        "React Native",
+        "React",
+        "React Navigation",
+        "Testing",
+        "Performance Optimization",
+        "CI/CD",
+        "Design Systems",
+        "Storybook",
+      ],
       bullets: [
-        "Contributed to stock trading & savings mobile app ahead of launch.",
+        "Joined the team to help launch the new mobile app.",
         "Built a new web UI component library and key portal sections.",
       ],
     },
@@ -193,10 +244,11 @@ function App() {
         "Multi-purpose solution to automate system administrators' work. A firewall, proxy, ACL, mail server, telephony, VPN, in a nice all-in-one package with a simple UI.",
       startup: true,
       badgeAboveDot: "Moved to 🇸🇪 Sweden",
+      tags: ["Project Management", "Node.js", "JavaScript", "React", "PHP", "FreeBSD", "Networks"],
       bullets: [
         "Internet access gateway solutions for the ex‑USSR market.",
+        "Led the project from a prototype to mature product with large customer base.",
         "Full‑stack development, project leadership, and PM.",
-        "Networking tech, FreeBSD, Node.js, JavaScript, IP telephony.",
       ],
       isLast: true,
     },

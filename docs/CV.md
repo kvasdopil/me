@@ -26,6 +26,8 @@ Parcel delivery to lockers. Best and biggest in Nordics.
 - Advocated for a company-wide adoption of AI-assisted development practices, improving developer productivity.
 - Self-proclaimed AI-ambassador and MVP fanboy.
 
+Tags: React, TypeScript, Next.js, Go, K8S, Ai-sdk, Geospatial, IoT, Ubuntu Core
+
 ---
 
 ### NextML, Stockholm — _Full Stack Developer_
@@ -38,6 +40,8 @@ A solution to automate inspection of railroad track and wire using computer visi
 - Built and maintained UI for an AI-powered track damage detection product for railway operators and maintenance providers.
 - Focused on web maps (Leaflet, Mapbox, OpenStreetMap), WebGL, and low-level performance optimizations.
 - Performed extensive refactoring and prototyping.
+
+Tags: React, TypeScript, Leaflet, Geospatial, OpenStreetMap
 
 ---
 
@@ -54,6 +58,8 @@ Interactive digital solutions for retail.
 - Implemented computer vision solutions (face recognition & detection).
 - Built interactive apps with animations, 3D graphics, TTS, speech & image recognition, and hardware interfaces.
 
+Tags: React, Node.js, Azure, Azure IoT, Linux, WebGL
+
 ---
 
 ### Nordnet, Stockholm — _Mobile & Web Developer_
@@ -65,6 +71,8 @@ Stock trading and savings application for web and mobile.
 - Contributed to a mobile app for stock trading, investment, savings, and pension management.
 - Developed and integrated a new UI component library for the web portal.
 - Implemented critical website sections ahead of a major product launch.
+
+Tags: React Native, React
 
 ---
 
@@ -79,6 +87,8 @@ Multi-purpose solution to automate system administrators' work. The product incl
 - Full stack development, project leadership, and PM.
 - Drove projects from prototypes to mature products with large customer bases.
 - Specialized in networking technologies, FreeBSD, Node.js, JavaScript, and IP telephony.
+
+Tags: Project Management, Node.js, React, FreeBSD, Networks
 
 ---
 
