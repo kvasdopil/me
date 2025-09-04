@@ -31,8 +31,9 @@ jobs:
         run: npm run lint
 
       - name: Build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+        # website is hosted on separate domain, so we don't need to set BASE_PATH
+        #env:
+        #  BASE_PATH: /${{ github.event.repository.name }}/
         run: npm run build
 
       - name: Upload artifact
