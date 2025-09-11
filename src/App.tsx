@@ -45,7 +45,11 @@ function Modal({
 }) {
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center" aria-modal="true" role="dialog">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      aria-modal="true"
+      role="dialog"
+    >
       <div className="absolute inset-0 bg-black/45" onClick={onClose} />
       <div
         className="relative z-10 mx-4 w-full max-w-4xl rounded-xl bg-white p-6 md:p-8 shadow-2xl"
@@ -313,9 +317,13 @@ function App() {
             "The service was running in go, additional data processing performed in python using data from OpenStreetMap and OSRM. Front-end done in next.js, TypeScript, using maplibre. Most of the development was done in cursor.",
           ],
         },
-        { text: "Prototyped hardware and software for the next-generation parcel locker platform." },
+        {
+          text: "Prototyped hardware and software for the next-generation parcel locker platform.",
+        },
         { text: "Researched and developed AI-powered analytics tools for operational insights." },
-        { text: "Advocated for a company-wide adoption of AI-assisted development practices, improving developer productivity." },
+        {
+          text: "Advocated for a company-wide adoption of AI-assisted development practices, improving developer productivity.",
+        },
         { text: "Self-proclaimed AI-ambassador and MVP fanboy." },
       ],
     },
@@ -513,7 +521,12 @@ function App() {
           <div className="relative mt-7">
             <div className="pointer-events-none absolute inset-y-0 md:left-1/2 md:-translate-x-1/2 w-2 md:w-3 z-0" />
             {timeline.map((t, idx) => (
-              <TimelineItem key={t.title} item={t} addTopMargin={idx !== 0} onOpenDetail={openDetail} />
+              <TimelineItem
+                key={t.title}
+                item={t}
+                addTopMargin={idx !== 0}
+                onOpenDetail={openDetail}
+              />
             ))}
           </div>
         </section>
