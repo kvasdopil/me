@@ -2,7 +2,7 @@
 
 **Full Stack / Mobile / IoT / Embedded Linux Developer / AI fanboy**
 
-For me, building software for the last 20 years has been about one thing: creative problem-solving. My real strength is connecting the dots between different fields—IoT, mobile, AI, and backend—to find innovative solutions others might miss. I genuinely enjoy the process of taking a project from a "what if" idea to a real-world product, and I'm very comfortable working through the many unknowns to get there efficiently. I love to learn, tinker, and ultimately, ship great work.
+For me, building software for the last 20 years has been about one thing: creative problem-solving. My real strength is connecting the dots between different fields-IoT, mobile, AI, and backend-to find innovative solutions others might miss. I genuinely enjoy the process of taking a project from a "what if" idea to a real-world product, and I'm very comfortable working through the many unknowns to get there efficiently. I love to learn, tinker, and ultimately, ship great work.
 
 📍 Stockholm, Sweden  
 📞 (+46) 7-2224-1995  
@@ -12,15 +12,26 @@ For me, building software for the last 20 years has been about one thing: creati
 
 ## Work Experience
 
-### Instabee, Stockholm — _Full Stack Developer_
+### Instabee, Stockholm - _Full Stack Developer_
 
 **2025 – current**
 
 Parcel delivery to lockers. Best and biggest in Nordics.
 
 - Built and maintained internal tools for monitoring and managing a large device fleet.
-- Developed and optimized backend APIs supporting core business services.
+> When I started, just to get a sense of what's going on I've built a small dashboard with all the parcel lockers we managed. It showed them on a map, had some filters, search, historical values and basic reports. Nothing fancy - just a quick experiment so I could get a grip on things and understand how APIs are wired together.
+> Turns out, the team really liked it. They had been discussing a similar idea for years but couldn’t get it moving past the meetings. My little prototype unblocked the project, and together we started shaping it into a proper fleet management dashboard. It wasn’t just about the tool - it was about showing how a simple experiment can spark collaboration and get everyone moving in the same direction.
+> For me, this project wasn’t only about solving a problem, but also about showing the value of quick iterations and side projects. I like bringing people along, building momentum, and proving that even small ideas can turn into something the whole team is proud of.
+> The project was done in `TypeScript` for `next.js`, using `maplibre` for map rendering. A small `psql` database to keep historical data. Deployments done with `gh actions`, `helm` and `terraform` to `k8s` cluster on `gcp`. Most of the development was done in `cursor`.
 - Expanded and optimized geospatial services ahead of launch in a new international market.
+> Oh I love that one!
+> So, I was assigned to temporarily take ownership of an abandoned geospatial ranking service right before launch in a new market. The tool, and service, was used to rank parcel lockers by proximity to the customer, but a lot of work was done manually and the results weren’t too accurate or consistent, so we faced a mountain of manual work if nothing changed.
+> I've took the initiative to use routing data from OpenStreetMap and automate things, which immediately improved both accuracy and reliability. The changes were deliberately non-intrusive - fully backward-compatible, no backend modifications required, and no extra risks introduced during a critical launch window.
+> This work unblocked the development, saved the team a lot of time, and gave stakeholders confidence that the launch could move forward. It also set the foundation for future improvements without creating technical debt.
+> I've also built a simple visualisation UI to visualize the results, which turned out to be essential during the validation phase of the project.
+> Later, once things calmed down, another team took over ownership - and they were happy to inherit a service that was stable, useful, and already making progress.
+> The service was running in `go`, additional data processing performed in `python` using data from `OpenStreetMap` and `OSRM`. Front-end done in `next.js`, `TypeScript`, using `maplibre`. Most of the development was done in `cursor`.
+- Developed and optimized backend APIs supporting core business services.
 - Prototyped hardware and software for the next-generation parcel locker platform.
 - Researched and developed AI-powered analytics tools for operational insights.
 - Advocated for a company-wide adoption of AI-assisted development practices, improving developer productivity.
@@ -30,7 +41,7 @@ Tags: React, TypeScript, Next.js, Go, K8S, Ai-sdk, Geospatial, IoT, Ubuntu Core
 
 ---
 
-### NextML, Stockholm — _Full Stack Developer_
+### NextML, Stockholm - _Full Stack Developer_
 
 **2023 – 2025**
 
@@ -45,7 +56,7 @@ Tags: React, TypeScript, Leaflet, Geospatial, OpenStreetMap
 
 ---
 
-### Ombori Apps, Stockholm — _Head of R&D_
+### Ombori Apps, Stockholm - _Head of R&D_
 
 **2017 – 2023**
 
@@ -62,7 +73,7 @@ Tags: React, Node.js, Azure, Azure IoT, Linux, WebGL
 
 ---
 
-### Nordnet, Stockholm — _Mobile & Web Developer_
+### Nordnet, Stockholm - _Mobile & Web Developer_
 
 Stock trading and savings application for web and mobile.
 
@@ -76,7 +87,7 @@ Tags: React Native, React
 
 ---
 
-### Areal, Yaroslavl — _Head of Software Development_
+### Areal, Yaroslavl - _Head of Software Development_
 
 [startup]
 Multi-purpose solution to automate system administrators' work. The product included a firewall and proxy server, access control software, mail server, IP telephony, and more.
@@ -115,8 +126,8 @@ Master of Computer Science (2003–2008)
 
 ## Languages
 
-- **English** — fluent
-- **Swedish** — basic
+- **English** - fluent
+- **Swedish** - basic
 
 ---
 
