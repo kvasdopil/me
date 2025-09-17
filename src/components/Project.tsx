@@ -10,7 +10,7 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
       {/* Return button */}
       <button
         onClick={() => navigate("/")}
-        className="fixed top-6 left-6 z-10 inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-md shadow-md hover:shadow-lg border border-gray-200"
+        className="cursor-pointer fixed top-6 left-6 z-10 inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-md shadow-md hover:shadow-lg border border-gray-200"
       >
         ← Back to Home
       </button>
@@ -43,7 +43,7 @@ export default function Project() {
               <h1 className="text-2xl font-semibold text-gray-900 mb-4">Project Not Found</h1>
               <button
                 onClick={() => navigate("/")}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-black"
+                className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-black"
               >
                 ← Back to Home
               </button>

@@ -34,6 +34,7 @@ Dedicated project pages provide in-depth information about specific work experie
 - **Geospatial Ranking**: Automated ranking system using OpenStreetMap data for improved logistics
 
 Each project page includes:
+
 - Project title and company information
 - Detailed technical descriptions
 - Technology stack with visual tags
@@ -62,24 +63,28 @@ src/
 ### Features
 
 #### 🎯 **Interactive Timeline**
+
 - Visual employment history with color-coded periods
 - Clickable "more..." links for projects with detailed information
 - Responsive design that works on mobile and desktop
 - Smooth hover effects and transitions
 
 #### 📄 **Project Deep Dives**
+
 - Dedicated pages for complex projects
 - Technical implementation details
 - Technology stack visualization
 - Performance metrics and outcomes
 
 #### 🎨 **Modern UI/UX**
+
 - Clean, professional design with Tailwind CSS
 - Consistent typography and spacing
 - Smooth animations and hover states
 - Mobile-responsive layout
 
 #### 🔧 **Technical Features**
+
 - **React Router**: Client-side routing for project pages
 - **Lazy Loading**: Optimized bundle splitting for project components
 - **TypeScript**: Full type safety throughout the application
@@ -87,6 +92,7 @@ src/
 - **Base Path Support**: Works correctly on GitHub Pages subdirectories
 
 #### 📱 **Responsive Design**
+
 - Mobile-first approach with responsive breakpoints
 - Optimized layouts for different screen sizes
 - Touch-friendly interactions
