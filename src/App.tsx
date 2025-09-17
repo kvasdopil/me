@@ -60,7 +60,7 @@ function TimelineItem({
         {item.bullets.map((b, i) => (
           <li
             key={i}
-            className={`cursor-pointer transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "hover:bg-blue-100 hover:text-blue-700" : ""}`}
+            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
           >
             {b.text}
             {b.id ? (
@@ -101,7 +101,7 @@ function TimelineItem({
         {item.bullets.map((b, i) => (
           <li
             key={i}
-            className={`cursor-pointer transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "hover:bg-blue-100 hover:text-blue-700" : ""}`}
+            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
           >
             {b.text}
             {b.id ? (
