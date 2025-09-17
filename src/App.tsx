@@ -1,5 +1,4 @@
 import { FaEnvelope, FaGithub, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
-import { useEffect, useState } from "react";
 import Tag from "./components/Tag";
 
 type TimelineSide = "left" | "right";
@@ -32,58 +31,14 @@ function StartupBadge() {
   );
 }
 
-function Modal({
-  open,
-  title,
-  paragraphs,
-  onClose,
-}: {
-  open: boolean;
-  title: string;
-  paragraphs: string[];
-  onClose: () => void;
-}) {
-  if (!open) return null;
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
-      aria-modal="true"
-      role="dialog"
-    >
-      <div className="absolute inset-0 bg-black/45" onClick={onClose} />
-      <div
-        className="relative z-10 mx-4 w-full max-w-4xl rounded-xl bg-white p-6 md:p-8 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl md:text-2xl font-semibold text-gray-900">{title}</h3>
-          <button
-            type="button"
-            aria-label="Close"
-            className="rounded-md px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            onClick={onClose}
-          >
-            ✕
-          </button>
-        </div>
-        <div className="mt-5 text-[15px] leading-7 text-gray-800 space-y-4">
-          {paragraphs.map((p, idx) => (
-            <p key={idx}>{p}</p>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function TimelineItem({
   item,
   addTopMargin,
-  onOpenDetail,
+  base,
 }: {
   item: TimelineItemData;
   addTopMargin?: boolean;
-  onOpenDetail: (id: string) => void;
+  base: string;
 }) {
   const containerBase = "relative md:grid md:grid-cols-2 md:gap-10";
   const containerClass = addTopMargin ? `${containerBase} mt-12` : containerBase;
@@ -103,18 +58,20 @@ function TimelineItem({
       ) : null}
       <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
         {item.bullets.map((b, i) => (
-          <li key={i}>
+          <li
+            key={i}
+            className={`cursor-pointer transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "hover:bg-blue-100 hover:text-blue-700" : ""}`}
+          >
             {b.text}
-            {b.details && b.id ? (
+            {b.id ? (
               <>
                 {"\u00A0"}
-                <button
-                  type="button"
-                  className="inline text-xs align-baseline text-indigo-600 hover:underline whitespace-nowrap"
-                  onClick={() => onOpenDetail(b.id!)}
+                <a
+                  href={`${base}project/${b.id}`}
+                  className="inline text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap"
                 >
                   more...
-                </button>
+                </a>
               </>
             ) : null}
           </li>
@@ -142,18 +99,20 @@ function TimelineItem({
       ) : null}
       <ul className="mt-3 list-inside list-disc text-gray-700">
         {item.bullets.map((b, i) => (
-          <li key={i}>
+          <li
+            key={i}
+            className={`cursor-pointer transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "hover:bg-blue-100 hover:text-blue-700" : ""}`}
+          >
             {b.text}
-            {b.details && b.id ? (
+            {b.id ? (
               <>
                 {"\u00A0"}
-                <button
-                  type="button"
-                  className="inline text-xs align-baseline text-indigo-600 hover:underline whitespace-nowrap"
-                  onClick={() => onOpenDetail(b.id!)}
+                <a
+                  href={`${base}project/${b.id}`}
+                  className="inline text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap"
                 >
                   more...
-                </button>
+                </a>
               </>
             ) : null}
           </li>
@@ -189,45 +148,6 @@ function TimelineItem({
 
 function App() {
   const base = import.meta.env.BASE_URL;
-  const [openDetailId, setOpenDetailId] = useState<string | null>(null);
-
-  function openDetail(id: string) {
-    const url = new URL(window.location.href);
-    url.hash = `detail=${encodeURIComponent(id)}`;
-    window.history.replaceState(null, "", url.toString());
-    setOpenDetailId(id);
-  }
-
-  function closeModal() {
-    const url = new URL(window.location.href);
-    url.hash = "";
-    window.history.replaceState(null, "", url.toString());
-    setOpenDetailId(null);
-  }
-
-  useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        closeModal();
-      }
-    }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
-  useEffect(() => {
-    function syncFromHash() {
-      const hash = window.location.hash.replace(/^#/, "");
-      const match = hash.match(/^detail=(.+)$/);
-      if (match) {
-        setOpenDetailId(decodeURIComponent(match[1]));
-      } else {
-        setOpenDetailId(null);
-      }
-    }
-    syncFromHash();
-    window.addEventListener("hashchange", syncFromHash);
-    return () => window.removeEventListener("hashchange", syncFromHash);
-  }, []);
 
   const roles: string[] = [
     "Full Stack",
@@ -294,28 +214,11 @@ function App() {
         {
           text: "Built and maintained internal tools for monitoring and managing a large device fleet.",
           id: "instabee-fleet-dashboard",
-          detailsTitle: "Fleet management dashboard prototype",
-          details: [
-            "When I started, just to get a sense of what's going on I've built a small dashboard with all the parcel lockers we managed. It showed them on a map, had some filters, search, historical values and basic reports. Nothing fancy - just a quick experiment so I could get a grip on things and understand how APIs are wired together.",
-            "Turns out, the team really liked it. They had been discussing a similar idea for years but couldn’t get it moving past the meetings. My little prototype unblocked the project, and together we started shaping it into a proper fleet management dashboard. It wasn’t just about the tool - it was about showing how a simple experiment can spark collaboration and get everyone moving in the same direction.",
-            "For me, this project wasn’t only about solving a problem, but also about showing the value of quick iterations and side projects. I like bringing people along, building momentum, and proving that even small ideas can turn into something the whole team is proud of.",
-            "The project was done in TypeScript for next.js, using maplibre for map rendering. A small psql database to keep historical data. Deployments done with gh actions, helm and terraform to k8s cluster on gcp. Most of the development was done in cursor.",
-          ],
         },
         { text: "Developed and optimized backend APIs supporting core business services." },
         {
           text: "Expanded and optimized geospatial services ahead of launch in a new international market.",
           id: "instabee-geospatial-ranking",
-          detailsTitle: "Geospatial ranking and routing improvements",
-          details: [
-            "Oh I love that one!",
-            "So, I was assigned to temporarily take ownership of an abandoned geospatial ranking service right before launch in a new market. The tool, and service, was used to rank parcel lockers by proximity to the customer, but a lot of work was done manually and the results weren’t too accurate or consistent, so we faced a mountain of manual work if nothing changed.",
-            "I've took the initiative to use routing data from OpenStreetMap and automate things, which immediately improved both accuracy and reliability. The changes were deliberately non-intrusive - fully backward-compatible, no backend modifications required, and no extra risks introduced during a critical launch window.",
-            "This work unblocked the development, saved the team a lot of time, and gave stakeholders confidence that the launch could move forward. It also set the foundation for future improvements without creating technical debt.",
-            "I've also built a simple visualisation UI to visualize the results, which turned out to be essential during the validation phase of the project.",
-            "Later, once things calmed down, another team took over ownership - and they were happy to inherit a service that was stable, useful, and already making progress.",
-            "The service was running in go, additional data processing performed in python using data from OpenStreetMap and OSRM. Front-end done in next.js, TypeScript, using maplibre. Most of the development was done in cursor.",
-          ],
         },
         {
           text: "Prototyped hardware and software for the next-generation parcel locker platform.",
@@ -521,12 +424,7 @@ function App() {
           <div className="relative mt-7">
             <div className="pointer-events-none absolute inset-y-0 md:left-1/2 md:-translate-x-1/2 w-2 md:w-3 z-0" />
             {timeline.map((t, idx) => (
-              <TimelineItem
-                key={t.title}
-                item={t}
-                addTopMargin={idx !== 0}
-                onOpenDetail={openDetail}
-              />
+              <TimelineItem key={t.title} item={t} addTopMargin={idx !== 0} base={base} />
             ))}
           </div>
         </section>
@@ -572,29 +470,6 @@ function App() {
           © {new Date().getFullYear()} Alexey Guskov ✨
         </footer>
       </main>
-      {/* Hash-driven modal */}
-      {(() => {
-        if (!openDetailId) return null;
-        // find bullet by id
-        const allBullets: { id: string; title: string; paragraphs: string[] }[] = [];
-        timeline.forEach((t) => {
-          t.bullets.forEach((b) => {
-            if (b.id && b.details && b.detailsTitle) {
-              allBullets.push({ id: b.id, title: b.detailsTitle, paragraphs: b.details });
-            }
-          });
-        });
-        const found = allBullets.find((b) => b.id === openDetailId);
-        if (!found) return null;
-        return (
-          <Modal
-            open={true}
-            title={found.title}
-            paragraphs={found.paragraphs}
-            onClose={closeModal}
-          />
-        );
-      })()}
     </div>
   );
 }
