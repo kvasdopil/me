@@ -61,13 +61,13 @@ function App() {
         <p>
           I'm at my best when tackling a tough challenge, whether that means architecting a new
           system from the ground up or{" "}
-          <strong className="font-semibold">mentoring teammates</strong>
+          <strong className="font-semibold"> mentoring teammates </strong>
           on new tools that make everyone's workflow a little smoother.
         </p>
         <p>
-          It all comes down to moving <strong className="font-semibold">fast</strong>, building
+          It all comes down to moving<strong className="font-semibold"> fast</strong>, building
           <strong className="font-semibold"> smart</strong>, and fostering a great environment where
-          the <strong className="font-semibold">whole team</strong> can succeed.
+          the<strong className="font-semibold"> whole team </strong>can succeed.
         </p>
       </Header>
 
