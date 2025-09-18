@@ -1,0 +1,411 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.9041,
+                    52.3676
+                ]
+            },
+            "properties": {
+                "name": "Amsterdam",
+                "population": 900000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.4792,
+                    51.9244
+                ]
+            },
+            "properties": {
+                "name": "Rotterdam",
+                "population": 650000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3007,
+                    52.0705
+                ]
+            },
+            "properties": {
+                "name": "The Hague",
+                "population": 550000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.1214,
+                    52.0907
+                ]
+            },
+            "properties": {
+                "name": "Utrecht",
+                "population": 360000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.4697,
+                    51.4416
+                ]
+            },
+            "properties": {
+                "name": "Eindhoven",
+                "population": 235000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.0913,
+                    51.5555
+                ]
+            },
+            "properties": {
+                "name": "Tilburg",
+                "population": 220000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.5665,
+                    53.2194
+                ]
+            },
+            "properties": {
+                "name": "Groningen",
+                "population": 205000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.2195,
+                    52.3508
+                ]
+            },
+            "properties": {
+                "name": "Almere",
+                "population": 200000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.7806,
+                    51.5719
+                ]
+            },
+            "properties": {
+                "name": "Breda",
+                "population": 185000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.8526,
+                    51.8126
+                ]
+            },
+            "properties": {
+                "name": "Nijmegen",
+                "population": 175000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.8958,
+                    52.2215
+                ]
+            },
+            "properties": {
+                "name": "Enschede",
+                "population": 160000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.6462,
+                    52.3874
+                ]
+            },
+            "properties": {
+                "name": "Haarlem",
+                "population": 160000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.8987,
+                    51.9851
+                ]
+            },
+            "properties": {
+                "name": "Arnhem",
+                "population": 160000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.7931,
+                    52.4427
+                ]
+            },
+            "properties": {
+                "name": "Zaanstad",
+                "population": 155000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.3878,
+                    52.1561
+                ]
+            },
+            "properties": {
+                "name": "Amersfoort",
+                "population": 155000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.9185,
+                    52.2112
+                ]
+            },
+            "properties": {
+                "name": "Apeldoorn",
+                "population": 140000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.3037,
+                    51.6978
+                ]
+            },
+            "properties": {
+                "name": "'s-Hertogenbosch",
+                "population": 155000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.6883,
+                    52.3026
+                ]
+            },
+            "properties": {
+                "name": "Hoofddorp",
+                "population": 140000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.6900,
+                    50.8483
+                ]
+            },
+            "properties": {
+                "name": "Maastricht",
+                "population": 120000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.0932,
+                    52.5168
+                ]
+            },
+            "properties": {
+                "name": "Zwolle",
+                "population": 130000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.1600,
+                    52.2500
+                ]
+            },
+            "properties": {
+                "name": "Deventer",
+                "population": 100000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3570,
+                    52.0116
+                ]
+            },
+            "properties": {
+                "name": "Delft",
+                "population": 100000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.7534,
+                    52.6317
+                ]
+            },
+            "properties": {
+                "name": "Alkmaar",
+                "population": 110000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.7925,
+                    53.2012
+                ]
+            },
+            "properties": {
+                "name": "Leeuwarden",
+                "population": 110000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.6611,
+                    51.4793
+                ]
+            },
+            "properties": {
+                "name": "Helmond",
+                "population": 95000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.1681,
+                    51.3704
+                ]
+            },
+            "properties": {
+                "name": "Venlo",
+                "population": 105000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.6735,
+                    51.8133
+                ]
+            },
+            "properties": {
+                "name": "Dordrecht",
+                "population": 120000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.7084,
+                    52.0116
+                ]
+            },
+            "properties": {
+                "name": "Gouda",
+                "population": 75000
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.1778,
+                    52.2233
+                ]
+            },
+            "properties": {
+                "name": "Hilversum",
+                "population": 95000
+            }
+        }
+    ]
+}

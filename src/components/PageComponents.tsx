@@ -73,7 +73,7 @@ interface TagProps {
 
 export const Tag: React.FC<TagProps> = ({ children, className = "" }) => (
   <span
-    className={`m-0 inline-flex items-center rounded-full bg-blue-100 px-2 py-0.5 text-sm text-gray-800 ${className}`}
+    className={`m-0 inline-flex items-center rounded-full bg-blue-100 px-2 py-0.5 text-sm text-blue-900 ${className}`}
   >
     {children}
   </span>
