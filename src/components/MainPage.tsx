@@ -5,29 +5,8 @@ import Tag from "./Tag";
 // Types
 type TimelineSide = "left" | "right";
 
-type BulletItem = {
-  text: string;
-  id?: string; // unique id if details present
-  details?: string[]; // paragraphs
-  detailsTitle?: string;
-};
-
-type TimelineItemData = {
-  side: TimelineSide;
-  colorClass: string; // Tailwind color class like "bg-emerald-500"
-  period: string;
-  title: string;
-  description?: string;
-  startup?: boolean;
-  hobby?: boolean;
-  pairWithNext?: boolean;
-  bullets?: BulletItem[];
-  isLast?: boolean;
-  badgeAboveDot?: string;
-  tags?: string[];
-  link?: string;
-  linkText?: string;
-};
+// Context to pass Timeline-wide data to children
+const TimelineContext = React.createContext<{ base: string } | null>(null);
 
 // Main Container
 interface MainPageContainerProps {
@@ -146,83 +125,197 @@ interface TimelineProps {
   base: string;
 }
 
-type TimelineItemProps = Omit<TimelineItemData, "bullets"> & {
+interface TimelineItemProps {
+  side: TimelineSide;
+  colorClass: string;
+  period: string;
+  title: string;
+  description?: string;
+  startup?: boolean;
+  hobby?: boolean;
+  pairWithNext?: boolean;
+  isLast?: boolean;
+  badgeAboveDot?: string;
+  tags?: string[];
+  link?: string;
+  linkText?: string;
   children?: React.ReactNode;
-};
+}
 
 interface TimelineBulletProps {
   id?: string;
   children: React.ReactNode;
 }
 
-export const TimelineBullet: React.FC<TimelineBulletProps> = () => null;
+export const TimelineBullet: React.FC<TimelineBulletProps> = ({ id, children }) => {
+  const ctx = React.useContext(TimelineContext);
+  const isText = typeof children === "string";
+  return (
+    <li
+      className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
+        }`}
+    >
+      {id && isText ? (
+        <a href={`${ctx?.base ?? ""}project/${id}`} className="">
+          {children}
+          {"\u00A0"}
+          <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
+            more...
+          </span>
+        </a>
+      ) : (
+        <>{children}</>
+      )}
+    </li>
+  );
+};
 
-export const TimelineItem: React.FC<TimelineItemProps> = () => null;
+export const TimelineItem: React.FC<TimelineItemProps> = ({
+  side,
+  period,
+  title,
+  description,
+  startup,
+  hobby,
+  tags,
+  link,
+  linkText,
+  children,
+}) => {
+  const content = (
+    <>
+      <div className="text-xs font-semibold text-gray-400">{period}</div>
+      <div className="font-medium">
+        {hobby && <HobbyTag />}
+        {title}
+      </div>
+      {description ? (
+        <div className="mt-1 text-sm text-gray-600">
+          {startup ? <StartupBadge /> : null}
+          {description}
+        </div>
+      ) : null}
+      {children ? (
+        <ul
+          className={
+            side === "left"
+              ? "mt-3 text-left list-inside list-disc text-gray-700"
+              : "mt-3 list-inside list-disc text-gray-700"
+          }
+        >
+          {children}
+        </ul>
+      ) : null}
+      {tags && tags.length ? (
+        <div
+          className={
+            side === "left" ? "mt-3 flex flex-wrap justify-end gap-2" : "mt-3 flex flex-wrap gap-2"
+          }
+        >
+          {tags.map((t) => (
+            <Tag key={t} label={t} />
+          ))}
+        </div>
+      ) : null}
+      {side === "left" && link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-md font-semibold text-orange-400 shadow-md border-1 border-orange-400 rounded-md px-3 py-1.5 mt-4 hover:bg-orange-100 inline-block float-right"
+        >
+          {linkText}
+        </a>
+      ) : null}
+    </>
+  );
+
+  return (
+    <div
+      className={
+        side === "left"
+          ? "pl-10 md:pl-0 md:col-span-1 md:pr-12 text-left md:text-right"
+          : "pl-10 md:pl-12 md:col-start-2 md:col-span-1"
+      }
+    >
+      {hobby ? (
+        <div className="inline-block w-fit rounded-lg border-1 border-orange-200 border-dashed bg-yellow-50 p-4 -mx-4 mb-4">
+          {content}
+        </div>
+      ) : (
+        content
+      )}
+    </div>
+  );
+};
 
 export const Timeline: React.FC<TimelineProps> = ({ children, base }) => {
-  const items: TimelineItemData[] = [];
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child) && child.type === TimelineItem) {
-      const props = child.props as TimelineItemProps;
-      const bullets: BulletItem[] = [];
-      React.Children.forEach(props.children, (sub) => {
-        if (React.isValidElement(sub) && sub.type === TimelineBullet) {
-          const bProps = sub.props as TimelineBulletProps;
-          const text = typeof bProps.children === "string" ? bProps.children : "";
-          if (text.trim().length) bullets.push({ text: text.trim(), id: bProps.id });
-        }
-      });
-      items.push({ ...props, bullets });
-    }
-  });
+  const childArray = React.Children.toArray(children).filter(
+    (child) => React.isValidElement(child) && (child as React.ReactElement).type === TimelineItem,
+  ) as React.ReactElement<TimelineItemProps>[];
 
   const rows: React.ReactNode[] = [];
-  for (let i = 0; i < items.length; i++) {
-    const current = items[i];
-    const next = items[i + 1];
-    const currentWithComputedLast = {
-      ...current,
-      isLast: typeof current.isLast === "boolean" ? current.isLast : i === items.length - 1,
-    } as TimelineItemData;
-    if (current.pairWithNext && current.side === "left" && next && next.side === "right") {
+  for (let i = 0; i < childArray.length; i++) {
+    const current = childArray[i];
+    const next = childArray[i + 1];
+    const isLast =
+      typeof current.props.isLast === "boolean"
+        ? current.props.isLast
+        : i === childArray.length - 1;
+
+    if (
+      current.props.pairWithNext &&
+      current.props.side === "left" &&
+      next &&
+      next.props.side === "right"
+    ) {
       rows.push(
         <TimelineEntry
-          key={`${current.title}-${next.title}`}
-          item={currentWithComputedLast}
-          pairedRightItem={next}
+          key={`${current.props.title}-${next.props.title}`}
+          left={current}
+          right={next}
+          colorClass={current.props.colorClass}
+          isLast={isLast}
+          badgeAboveDot={current.props.badgeAboveDot}
           addTopMargin={rows.length !== 0}
-          base={base}
         />,
       );
       i++; // skip the next since it's paired
     } else {
       rows.push(
         <TimelineEntry
-          key={current.title}
-          item={currentWithComputedLast}
+          key={current.props.title}
+          left={current.props.side === "left" ? current : undefined}
+          right={current.props.side === "right" ? current : undefined}
+          colorClass={current.props.colorClass}
+          isLast={isLast}
+          badgeAboveDot={current.props.badgeAboveDot}
           addTopMargin={rows.length !== 0}
-          base={base}
         />,
       );
     }
   }
 
   return (
-    <section className="mt-8">
-      <h2 className="text-xl font-semibold tracking-tight">🖖 My journey</h2>
-      <div className="relative mt-7">
-        <div className="pointer-events-none absolute inset-y-0 md:left-1/2 md:-translate-x-1/2 w-2 md:w-3 z-0" />
-        {rows}
-      </div>
-    </section>
+    <TimelineContext.Provider value={{ base }}>
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold tracking-tight">🖖 My journey</h2>
+        <div className="relative mt-7">
+          <div className="pointer-events-none absolute inset-y-0 md:left-1/2 md:-translate-x-1/2 w-2 md:w-3 z-0" />
+          {rows}
+        </div>
+      </section>
+    </TimelineContext.Provider>
   );
 };
 
 interface TimelineEntryProps {
-  item: TimelineItemData;
-  pairedRightItem?: TimelineItemData;
+  left?: React.ReactNode;
+  right?: React.ReactNode;
+  colorClass: string;
+  isLast: boolean;
+  badgeAboveDot?: string;
   addTopMargin?: boolean;
-  base: string;
 }
 
 const StartupBadge = () => (
@@ -238,163 +331,29 @@ const HobbyTag = () => (
 );
 
 export const TimelineEntry: React.FC<TimelineEntryProps> = ({
-  item,
-  pairedRightItem,
+  left,
+  right,
+  colorClass,
+  isLast,
+  badgeAboveDot,
   addTopMargin,
-  base,
 }) => {
   const containerBase = "relative md:grid md:grid-cols-2 md:gap-10";
   const containerClass = addTopMargin ? `${containerBase} mt-12` : containerBase;
-  const lineBottomClass = item.isLast ? "-bottom-0" : "-bottom-18";
-  const dotClass = item.colorClass;
-  const lineClass = item.colorClass;
-
-  const renderLeft = (forItem: TimelineItemData) => {
-    const content = (
-      <>
-        <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
-        <div className="font-medium">
-          {forItem.hobby && <HobbyTag />}
-          {forItem.title}
-        </div>
-        {forItem.description ? (
-          <div className="mt-1 text-sm text-gray-600">
-            {forItem.startup ? <StartupBadge /> : null}
-            {forItem.description}
-          </div>
-        ) : null}
-        {forItem.bullets && forItem.bullets.length > 0 ? (
-          <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
-            {forItem.bullets.map((b, i) => (
-              <li
-                key={i}
-                className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
-              >
-                {b.id ? (
-                  <a href={`${base}project/${b.id}`}>
-                    {b.text}
-                    {"\u00A0"}
-                    <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
-                      more...
-                    </span>
-                  </a>
-                ) : (
-                  b.text
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        {forItem.tags && forItem.tags.length ? (
-          <div className="mt-3 flex flex-wrap justify-end gap-2">
-            {forItem.tags.map((t) => (
-              <Tag key={t} label={t} />
-            ))}
-          </div>
-        ) : null}
-        {forItem.link ? (
-          <a
-            href={forItem.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-md font-semibold text-orange-400 shadow-md border-1 border-orange-400 rounded-md px-3 py-1.5 mt-4 hover:bg-orange-100 inline-block float-right"
-          >
-            {forItem.linkText}
-          </a>
-        ) : null}
-      </>
-    );
-
-    return (
-      <div className="pl-10 md:pl-0 md:col-span-1 md:pr-12 text-left md:text-right">
-        {forItem.hobby ? (
-          <div className="inline-block w-fit rounded-lg border-1 border-orange-200 border-dashed bg-yellow-50 p-4 -mx-4 mb-4">
-            {content}
-          </div>
-        ) : (
-          content
-        )}
-      </div>
-    );
-  };
-
-  const renderRight = (forItem: TimelineItemData) => {
-    const content = (
-      <>
-        <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
-        <div className="font-medium">
-          {forItem.hobby && <HobbyTag />}
-          {forItem.title}
-        </div>
-        {forItem.description ? (
-          <div className="mt-1 text-sm text-gray-600">
-            {forItem.startup ? <StartupBadge /> : null}
-            {forItem.description}
-          </div>
-        ) : null}
-        {forItem.bullets && forItem.bullets.length > 0 ? (
-          <ul className="mt-3 list-inside list-disc text-gray-700">
-            {forItem.bullets.map((b, i) => (
-              <li
-                key={i}
-                className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
-              >
-                {b.id ? (
-                  <a href={`${base}project/${b.id}`} className=" whitespace-nowrap">
-                    {b.text}
-                    {"\u00A0"}
-                    <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
-                      more...
-                    </span>
-                  </a>
-                ) : (
-                  b.text
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        {forItem.tags && forItem.tags.length ? (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {forItem.tags.map((t) => (
-              <Tag key={t} label={t} />
-            ))}
-          </div>
-        ) : null}
-      </>
-    );
-
-    return (
-      <div className="pl-10 md:pl-12 md:col-start-2">
-        {forItem.hobby ? (
-          <div className="inline-block w-fit rounded-lg border-1 border-orange-200 border-dashed bg-yellow-50 p-4 -mx-4 mb-4">
-            {content}
-          </div>
-        ) : (
-          content
-        )}
-      </div>
-    );
-  };
+  const lineBottomClass = isLast ? "-bottom-0" : "-bottom-18";
+  const dotClass = colorClass;
+  const lineClass = colorClass;
 
   return (
     <div className={containerClass}>
       <span
         className={`absolute left-1 md:left-1/2 md:-translate-x-1/2 top-7 ${lineBottomClass} w-2 md:w-3 rounded-full ${lineClass} z-10`}
       />
-      {pairedRightItem ? (
-        <>
-          {renderLeft(item)}
-          {renderRight(pairedRightItem)}
-        </>
-      ) : item.side === "left" ? (
-        renderLeft(item)
-      ) : (
-        renderRight(item)
-      )}
-      {item.badgeAboveDot ? (
+      {left}
+      {right ? right : <div className="hidden md:block md:col-start-2 md:col-span-1" />}
+      {badgeAboveDot ? (
         <span className="absolute ml-[-25px] md:ml-0 md:left-1/2 md:-translate-x-1/2 top-0 rounded-r-full -translate-y-8 md:rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-600 z-30 shadow-sm">
-          {item.badgeAboveDot}
+          {badgeAboveDot}
         </span>
       ) : null}
       <span
