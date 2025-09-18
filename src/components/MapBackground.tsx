@@ -116,7 +116,7 @@ export default function MapBackground({
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Map background */}
-      <div ref={mapContainer} className={className} style={{ zIndex: 0, opacity: 0.5 }} />
+      <div ref={mapContainer} className={className} style={{ zIndex: 0, opacity: 0.8 }} />
 
       {/* Content overlay */}
       {children && <div className="relative z-10">{children}</div>}
