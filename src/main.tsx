@@ -6,16 +6,21 @@ import App from "./App.tsx";
 import InstabeeFleetDashboard from "./projects/InstabeeFleetDashboard.tsx";
 import InstabeeGeospatialRanking from "./projects/InstabeeGeospatialRanking.tsx";
 
-// Handle GitHub Pages SPA redirect
-const handleGitHubPagesRedirect = () => {
-  const l = window.location;
-  if (l.search.startsWith('?/')) {
-    const decodedPath = l.search.slice(2).replace(/~and~/g, '&');
-    window.history.replaceState(null, '', l.pathname + decodedPath + l.hash);
+// Handle GitHub Pages SPA redirect (sessionStorage variant)
+const restorePathFromSessionStorage = () => {
+  try {
+    const stored = sessionStorage.getItem('ghp-spa-redirect');
+    if (stored && typeof stored === 'string') {
+      sessionStorage.removeItem('ghp-spa-redirect');
+      // Replace current URL with the originally requested path
+      window.history.replaceState(null, '', stored);
+    }
+  } catch {
+    // no-op if storage is unavailable
   }
 };
 
-handleGitHubPagesRedirect();
+restorePathFromSessionStorage();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

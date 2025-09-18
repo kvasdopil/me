@@ -5,34 +5,24 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script type="text/javascript">
-        // Single Page Apps for GitHub Pages
-        // MIT License
-        // https://github.com/rafgraph/spa-github-pages
-        // This script redirects to index.html with the path preserved for SPA routing
+        // Robust SPA redirect for GitHub Pages with custom domains
+        // 1) Store the original path in sessionStorage
+        // 2) Navigate to '/'
+        // 3) App boot reads and restores the path
 
-        var l = window.location;
+        (function () {
+            var l = window.location;
+            var originalPath = l.pathname + l.search + l.hash;
 
-        // Prevent infinite redirect loops
-        if (l.search.startsWith('?/')) {
-            // If we're already in a redirect state, just serve the index.html
-            window.location.href = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/';
-            return;
-        }
+            try {
+                sessionStorage.setItem('ghp-spa-redirect', originalPath);
+            } catch (e) {
+                // Ignore storage errors and fall back to simple redirect
+            }
 
-        // For custom domains (like guskov.dev), keep 0 path segments
-        var pathSegmentsToKeep = 0;
-
-        var redirect =
-            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-            l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-            l.hash;
-
-        // Only redirect if we're not already at the root with a query param
-        if (redirect !== l.href) {
-            l.replace(redirect);
-        }
+            // Redirect to site root so index.html is served
+            window.location.replace('/');
+        })();
     </script>
 </head>
 
