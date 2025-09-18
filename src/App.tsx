@@ -26,10 +26,13 @@ type TimelineItemData = {
   title: string;
   description?: string;
   startup?: boolean;
+  hobby?: boolean;
   bullets: BulletItem[];
   isLast?: boolean;
   badgeAboveDot?: string;
   tags?: string[];
+  link?: string;
+  linkText?: string;
 };
 
 function App() {
@@ -115,6 +118,19 @@ function App() {
         },
         { text: "Self-proclaimed AI-ambassador and MVP fanboy." },
       ],
+    },
+    {
+      side: "left",
+      colorClass: "bg-blue-500",
+      period: "2025",
+      title: "Garbage truck game",
+      link: "https://garbage.guskov.dev",
+      linkText: "Play",
+      hobby: true,
+      description:
+        "My son was obsessed with garbage trucks, so when OpenAI released a new multimodal model I took it for a spin to create a little tablet game for him.",
+      tags: ["Three.js", "ImageMagick", "Phaser.js", "GameDev"],
+      bullets: [],
     },
     {
       side: "right",

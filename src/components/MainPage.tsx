@@ -19,10 +19,13 @@ type TimelineItemData = {
   title: string;
   description?: string;
   startup?: boolean;
+  hobby?: boolean;
   bullets: BulletItem[];
   isLast?: boolean;
   badgeAboveDot?: string;
   tags?: string[];
+  link?: string;
+  linkText?: string;
 };
 
 // Main Container
@@ -141,20 +144,48 @@ interface TimelineProps {
   base: string;
 }
 
-export const Timeline: React.FC<TimelineProps> = ({ items, base }) => (
-  <section className="mt-8">
-    <h2 className="text-xl font-semibold tracking-tight">🖖 My journey</h2>
-    <div className="relative mt-7">
-      <div className="pointer-events-none absolute inset-y-0 md:left-1/2 md:-translate-x-1/2 w-2 md:w-3 z-0" />
-      {items.map((t, idx) => (
-        <TimelineEntry key={t.title} item={t} addTopMargin={idx !== 0} base={base} />
-      ))}
-    </div>
-  </section>
-);
+export const Timeline: React.FC<TimelineProps> = ({ items, base }) => {
+  const rows: React.ReactNode[] = [];
+  for (let i = 0; i < items.length; i++) {
+    const current = items[i];
+    const next = items[i + 1];
+    if (current.side === "left" && next && next.side === "right") {
+      rows.push(
+        <TimelineEntry
+          key={`${current.title}-${next.title}`}
+          item={current}
+          pairedRightItem={next}
+          addTopMargin={rows.length !== 0}
+          base={base}
+        />,
+      );
+      i++; // skip the next since it's paired
+    } else {
+      rows.push(
+        <TimelineEntry
+          key={current.title}
+          item={current}
+          addTopMargin={rows.length !== 0}
+          base={base}
+        />,
+      );
+    }
+  }
+
+  return (
+    <section className="mt-8">
+      <h2 className="text-xl font-semibold tracking-tight">🖖 My journey</h2>
+      <div className="relative mt-7">
+        <div className="pointer-events-none absolute inset-y-0 md:left-1/2 md:-translate-x-1/2 w-2 md:w-3 z-0" />
+        {rows}
+      </div>
+    </section>
+  );
+};
 
 interface TimelineEntryProps {
   item: TimelineItemData;
+  pairedRightItem?: TimelineItemData;
   addTopMargin?: boolean;
   base: string;
 }
@@ -165,88 +196,112 @@ const StartupBadge = () => (
   </span>
 );
 
-export const TimelineEntry: React.FC<TimelineEntryProps> = ({ item, addTopMargin, base }) => {
+const HobbyBadge = () => (
+  <span className="mr-2 rounded-full px-2 bg-blue-100 py-0.5 text-xs font-medium text-blue-500 align-middle">
+    🛠️&nbsp;hobby
+  </span>
+);
+
+export const TimelineEntry: React.FC<TimelineEntryProps> = ({
+  item,
+  pairedRightItem,
+  addTopMargin,
+  base,
+}) => {
   const containerBase = "relative md:grid md:grid-cols-2 md:gap-10";
   const containerClass = addTopMargin ? `${containerBase} mt-12` : containerBase;
   const lineBottomClass = item.isLast ? "-bottom-0" : "-bottom-18";
   const dotClass = item.colorClass;
   const lineClass = item.colorClass;
 
-  const contentLeft = (
+  const renderLeft = (forItem: TimelineItemData) => (
     <div className="pl-10 md:pl-0 md:col-span-1 md:pr-12 text-left md:text-right">
-      <div className="text-xs font-semibold text-gray-400">{item.period}</div>
-      <div className="font-medium">{item.title}</div>
-      {item.description ? (
+      <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
+      <div className="font-medium">{forItem.title}</div>
+      {forItem.description ? (
         <div className="mt-1 text-sm text-gray-600">
-          {item.startup ? <StartupBadge /> : null}
-          {item.description}
+          {forItem.startup ? <StartupBadge /> : null}
+          {forItem.hobby ? <HobbyBadge /> : null}
+          {forItem.description}
         </div>
       ) : null}
-      <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
-        {item.bullets.map((b, i) => (
-          <li
-            key={i}
-            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
-              }`}
-          >
-            {b.id ? (
-              <a href={`${base}project/${b.id}`}>
-                {b.text}
-                {"\u00A0"}
-                <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
-                  more...
-                </span>
-              </a>
-            ) : (
-              b.text
-            )}
-          </li>
-        ))}
-      </ul>
-      {item.tags && item.tags.length ? (
+      {forItem.bullets.length > 0 ? (
+        <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
+          {forItem.bullets.map((b, i) => (
+            <li
+              key={i}
+              className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
+            >
+              {b.id ? (
+                <a href={`${base}project/${b.id}`}>
+                  {b.text}
+                  {"\u00A0"}
+                  <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
+                    more...
+                  </span>
+                </a>
+              ) : (
+                b.text
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {forItem.tags && forItem.tags.length ? (
         <div className="mt-3 flex flex-wrap justify-end gap-2">
-          {item.tags.map((t) => (
+          {forItem.tags.map((t) => (
             <Tag key={t} label={t} />
           ))}
         </div>
       ) : null}
+      {forItem.link ? (
+        <a
+          href={forItem.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-md font-semibold text-blue-400 border-2 border-blue-400 rounded-md px-3 py-1.5 mt-4 hover:bg-blue-500 hover:border-blue-500 hover:text-white inline-block float-right"
+        >
+          {forItem.linkText}
+        </a>
+      ) : null}
     </div>
   );
 
-  const contentRight = (
+  const renderRight = (forItem: TimelineItemData) => (
     <div className="pl-10 md:pl-12 md:col-start-2">
-      <div className="text-xs font-semibold text-gray-400">{item.period}</div>
-      <div className="font-medium">{item.title}</div>
-      {item.description ? (
+      <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
+      <div className="font-medium">{forItem.title}</div>
+      {forItem.description ? (
         <div className="mt-1 text-sm text-gray-600">
-          {item.startup ? <StartupBadge /> : null}
-          {item.description}
+          {forItem.startup ? <StartupBadge /> : null}
+          {forItem.description}
         </div>
       ) : null}
-      <ul className="mt-3 list-inside list-disc text-gray-700">
-        {item.bullets.map((b, i) => (
-          <li
-            key={i}
-            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
-              }`}
-          >
-            {b.id ? (
-              <a href={`${base}project/${b.id}`} className=" whitespace-nowrap">
-                {b.text}
-                {"\u00A0"}
-                <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
-                  more...
-                </span>
-              </a>
-            ) : (
-              b.text
-            )}
-          </li>
-        ))}
-      </ul>
-      {item.tags && item.tags.length ? (
+      {forItem.bullets.length > 0 ? (
+        <ul className="mt-3 list-inside list-disc text-gray-700">
+          {forItem.bullets.map((b, i) => (
+            <li
+              key={i}
+              className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
+            >
+              {b.id ? (
+                <a href={`${base}project/${b.id}`} className=" whitespace-nowrap">
+                  {b.text}
+                  {"\u00A0"}
+                  <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
+                    more...
+                  </span>
+                </a>
+              ) : (
+                b.text
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {forItem.tags && forItem.tags.length ? (
         <div className="mt-3 flex flex-wrap gap-2">
-          {item.tags.map((t) => (
+          {forItem.tags.map((t) => (
             <Tag key={t} label={t} />
           ))}
         </div>
@@ -259,7 +314,16 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({ item, addTopMargin
       <span
         className={`absolute left-1 md:left-1/2 md:-translate-x-1/2 top-7 ${lineBottomClass} w-2 md:w-3 rounded-full ${lineClass} z-10`}
       />
-      {item.side === "left" ? contentLeft : contentRight}
+      {pairedRightItem ? (
+        <>
+          {renderLeft(item)}
+          {renderRight(pairedRightItem)}
+        </>
+      ) : item.side === "left" ? (
+        renderLeft(item)
+      ) : (
+        renderRight(item)
+      )}
       {item.badgeAboveDot ? (
         <span className="absolute ml-[-25px] md:ml-0 md:left-1/2 md:-translate-x-1/2 top-0 rounded-r-full -translate-y-8 md:rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-600 z-30 shadow-sm">
           {item.badgeAboveDot}
