@@ -21,7 +21,7 @@ type TimelineItemData = {
   startup?: boolean;
   hobby?: boolean;
   pairWithNext?: boolean;
-  bullets: BulletItem[];
+  bullets?: BulletItem[];
   isLast?: boolean;
   badgeAboveDot?: string;
   tags?: string[];
@@ -44,7 +44,6 @@ export const Container: React.FC<MainPageContainerProps> = ({ children }) => (
 interface HeaderProps {
   name: string;
   roles: string[];
-  bio: string[];
   location: string;
   email: string;
   phone: string;
@@ -52,12 +51,12 @@ interface HeaderProps {
   cvUrl: string;
   photoUrl: string;
   base: string;
+  children?: React.ReactNode;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   name,
   roles,
-  bio,
   location,
   email,
   phone,
@@ -65,6 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
   cvUrl,
   photoUrl,
   base,
+  children,
 }) => (
   <section>
     <div className="flex flex-col gap-7 sm:flex-row sm:items-center">
@@ -82,11 +82,7 @@ export const Header: React.FC<HeaderProps> = ({
             ))}
           </ul>
         </div>
-        <div className="mt-2 text-base text-gray-700 space-y-2">
-          {bio.map((paragraph, i) => (
-            <p key={i} dangerouslySetInnerHTML={{ __html: paragraph }} />
-          ))}
-        </div>
+        <div className="mt-2 text-base text-gray-700 space-y-2">{children}</div>
         <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-gray-700">
           <span className="inline-flex items-center gap-1">
             <FaMapMarkerAlt className="text-gray-500" /> {location}
@@ -123,38 +119,76 @@ export const Header: React.FC<HeaderProps> = ({
 
 // Skills Section
 interface SkillsProps {
-  skills: { label: string; value: string }[];
+  children: React.ReactNode;
 }
 
-export const Skills: React.FC<SkillsProps> = ({ skills }) => (
+interface SkillProps {
+  label: string;
+  children: React.ReactNode;
+}
+
+export const Skills: React.FC<SkillsProps> = ({ children }) => (
   <section className="mt-8">
     <h2 className="text-xl font-semibold tracking-tight">🛠️ Skills</h2>
-    <div className="mt-5 space-y-3.5 text-[15px] text-gray-700">
-      {skills.map((s) => (
-        <div key={s.label}>
-          <span className="font-medium">{s.label}</span> {s.value}
-        </div>
-      ))}
-    </div>
+    <div className="mt-5 space-y-3.5 text-[15px] text-gray-700">{children}</div>
   </section>
+);
+
+export const Skill: React.FC<SkillProps> = ({ label, children }) => (
+  <div>
+    <span className="font-medium">{label}</span> {children}
+  </div>
 );
 
 // Timeline Components
 interface TimelineProps {
-  items: TimelineItemData[];
+  children: React.ReactNode;
   base: string;
 }
 
-export const Timeline: React.FC<TimelineProps> = ({ items, base }) => {
+interface TimelineItemProps extends Omit<TimelineItemData, "bullets"> {
+  children?: React.ReactNode;
+}
+
+export const TimelineItem: React.FC<TimelineItemProps> = () => null;
+
+interface TimelineBulletProps {
+  id?: string;
+  children: React.ReactNode;
+}
+
+export const TimelineBullet: React.FC<TimelineBulletProps> = () => null;
+
+export const Timeline: React.FC<TimelineProps> = ({ children, base }) => {
+  const items: TimelineItemData[] = [];
+  React.Children.forEach(children, (child) => {
+    if (React.isValidElement(child) && child.type === TimelineItem) {
+      const props = child.props as TimelineItemProps;
+      const bullets: BulletItem[] = [];
+      React.Children.forEach(props.children, (sub) => {
+        if (React.isValidElement(sub) && sub.type === TimelineBullet) {
+          const bProps = sub.props as TimelineBulletProps;
+          const text = typeof bProps.children === "string" ? bProps.children : "";
+          if (text.trim().length) bullets.push({ text: text.trim(), id: bProps.id });
+        }
+      });
+      items.push({ ...props, bullets });
+    }
+  });
+
   const rows: React.ReactNode[] = [];
   for (let i = 0; i < items.length; i++) {
     const current = items[i];
     const next = items[i + 1];
+    const currentWithComputedLast = {
+      ...current,
+      isLast: typeof current.isLast === "boolean" ? current.isLast : i === items.length - 1,
+    } as TimelineItemData;
     if (current.pairWithNext && current.side === "left" && next && next.side === "right") {
       rows.push(
         <TimelineEntry
           key={`${current.title}-${next.title}`}
-          item={current}
+          item={currentWithComputedLast}
           pairedRightItem={next}
           addTopMargin={rows.length !== 0}
           base={base}
@@ -165,7 +199,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items, base }) => {
       rows.push(
         <TimelineEntry
           key={current.title}
-          item={current}
+          item={currentWithComputedLast}
           addTopMargin={rows.length !== 0}
           base={base}
         />,
@@ -226,7 +260,7 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({
           {forItem.description}
         </div>
       ) : null}
-      {forItem.bullets.length > 0 ? (
+      {forItem.bullets && forItem.bullets.length > 0 ? (
         <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
           {forItem.bullets.map((b, i) => (
             <li
@@ -260,7 +294,7 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({
           href={forItem.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-md font-semibold text-blue-400 border-2 border-blue-400 rounded-md px-3 py-1.5 mt-4 hover:bg-blue-500 hover:border-blue-500 hover:text-white inline-block float-right"
+          className="text-md font-semibold text-blue-500 shadow-md border-1 border-blue-500 rounded-md px-3 py-1.5 mt-4 hover:bg-blue-100 inline-block float-right"
         >
           {forItem.linkText}
         </a>
@@ -278,7 +312,7 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({
           {forItem.description}
         </div>
       ) : null}
-      {forItem.bullets.length > 0 ? (
+      {forItem.bullets && forItem.bullets.length > 0 ? (
         <ul className="mt-3 list-inside list-disc text-gray-700">
           {forItem.bullets.map((b, i) => (
             <li
@@ -354,59 +388,52 @@ export const Education: React.FC<EducationProps> = ({ period, institution }) => 
 );
 
 // Languages Section
-interface Language {
-  emoji: string;
-  label: string;
-  level: string;
-}
-
 interface LanguagesProps {
-  languages: Language[];
+  children: React.ReactNode;
 }
 
-export const Languages: React.FC<LanguagesProps> = ({ languages }) => (
+interface LanguageProps {
+  emoji: string;
+  level: string;
+  children: React.ReactNode;
+}
+
+export const Languages: React.FC<LanguagesProps> = ({ children }) => (
   <div>
     <h2 className="text-xl font-semibold tracking-tight">🗣️ Languages</h2>
-    <ul className="mt-3 text-base text-gray-700 list-none">
-      {languages.map((lng) => (
-        <li key={lng.label}>
-          <span role="img" aria-label={`${lng.label} flag`} className="inline-block mr-1">
-            {lng.emoji}
-          </span>
-          {lng.label} — {lng.level}
-        </li>
-      ))}
-    </ul>
+    <ul className="mt-3 text-base text-gray-700 list-none">{children}</ul>
   </div>
 );
 
+export const Language: React.FC<LanguageProps> = ({ emoji, level, children }) => (
+  <li>
+    <span role="img" aria-label="flag" className="inline-block mr-1">
+      {emoji}
+    </span>
+    {children} - {level}
+  </li>
+);
+
 // Hobbies Section
-interface Hobby {
-  label: string;
-  emoji: string;
-}
-
 interface HobbiesProps {
-  hobbies: Hobby[];
+  children: React.ReactNode;
 }
 
-export const Hobbies: React.FC<HobbiesProps> = ({ hobbies }) => (
+interface HobbyItemProps {
+  children: React.ReactNode;
+}
+
+export const Hobbies: React.FC<HobbiesProps> = ({ children }) => (
   <div>
     <h2 className="mt-7 text-xl font-semibold tracking-tight">🎯 Hobbies</h2>
-    <div className="mt-3 flex flex-wrap gap-2 text-base text-gray-700">
-      {hobbies.map((h) => (
-        <span
-          key={h.label}
-          className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm"
-        >
-          {h.label}{" "}
-          <span role="img" aria-label={h.label} className="ml-1">
-            {h.emoji}
-          </span>
-        </span>
-      ))}
-    </div>
+    <div className="mt-3 flex flex-wrap gap-2 text-base text-gray-700">{children}</div>
   </div>
+);
+
+export const Hobby: React.FC<HobbyItemProps> = ({ children }) => (
+  <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 font-medium shadow-sm">
+    {children}
+  </span>
 );
 
 // Footer
