@@ -52,14 +52,15 @@ export default function InstabeeFleetDashboard() {
                 </PageSection>
 
                 <PageSection>
-                  So it wasn't just about the tool - it was about showing how a simple
-                  experiment can spark collaboration and get everyone moving in the same direction.
+                  So it wasn't just about the tool - it was about showing how a simple experiment
+                  can spark collaboration and get everyone moving in the same direction.
                 </PageSection>
 
                 <PageSection>
-                  In the end, the ultimate goal of this project was to demonstrate the value of quick iterations and side projects.
-                  I like bringing people along, building momentum, and proving that even small ideas can turn into
-                  something the whole team is proud of.
+                  In the end, the ultimate goal of this project was to demonstrate the value of
+                  quick iterations and side projects. I like bringing people along, building
+                  momentum, and proving that even small ideas can turn into something the whole team
+                  is proud of.
                 </PageSection>
 
                 <PageSection>

@@ -217,6 +217,7 @@ Notes:
 ## 🗺️ **Mapping & Data Features** ✅
 
 **Implemented:**
+
 - Interactive map with supermarket clustering visualization
 - OSM data processing pipeline with CLI tools
 - Color-coded operator analysis (Coop/ICA market competition)
@@ -224,6 +225,7 @@ Notes:
 - Data-driven styling and performance optimizations
 
 **Future Enhancements:**
+
 - Additional data layers (population density, transport hubs)
 - Interactive filtering by operator or cluster size
 - Time-series animation of market expansion

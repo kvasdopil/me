@@ -7,24 +7,25 @@ import {
   PageContainer,
   Tag,
 } from "../components/PageComponents";
-import InstabeeMapBackground, { type GeoJSON } from "../components/InstabeeMapBackground";
+import InstabeeMapBackground from "../components/InstabeeMapBackground";
+import type { FeatureCollection } from "geojson";
 
 export default function InstabeeGeospatialRanking() {
-  const [suburbData, setSuburbData] = useState<GeoJSON | null>(null);
-  const [citiesData, setCitiesData] = useState<GeoJSON | null>(null);
+  const [suburbData, setSuburbData] = useState<FeatureCollection | null>(null);
+  const [citiesData, setCitiesData] = useState<FeatureCollection | null>(null);
 
   useEffect(() => {
     // Load Nuenen regions data
-    fetch('/nl-regions.geojson')
-      .then(response => response.json())
-      .then((data: GeoJSON) => setSuburbData(data))
-      .catch(error => console.error('Error loading regions data:', error));
+    fetch("/nl-regions.geojson")
+      .then((response) => response.json())
+      .then((data: FeatureCollection) => setSuburbData(data))
+      .catch((error) => console.error("Error loading regions data:", error));
 
     // Load cities data
-    fetch('/nl-cities.geojson')
-      .then(response => response.json())
-      .then((data: GeoJSON) => setCitiesData(data))
-      .catch(error => console.error('Error loading cities data:', error));
+    fetch("/nl-cities.geojson")
+      .then((response) => response.json())
+      .then((data: FeatureCollection) => setCitiesData(data))
+      .catch((error) => console.error("Error loading cities data:", error));
   }, []);
 
   return (
@@ -47,10 +48,10 @@ export default function InstabeeGeospatialRanking() {
 
                 <PageSection>
                   So, I was assigned to temporarily take ownership of an abandoned geospatial
-                  ranking service right before launch in a new market. It was
-                  used to rank parcel lockers by proximity to the customer, but a lot of work was
-                  done <i>manually</i> and the results weren't too accurate or consistent, so we faced a
-                  mountain of manual work if nothing changed.
+                  ranking service right before launch in a new market. It was used to rank parcel
+                  lockers by proximity to the customer, but a lot of work was done <i>manually</i>{" "}
+                  and the results weren't too accurate or consistent, so we faced a mountain of
+                  manual work if nothing changed.
                 </PageSection>
 
                 <PageSection>
@@ -68,7 +69,8 @@ export default function InstabeeGeospatialRanking() {
 
                 <PageSection>
                   I've also built a simple visualisation UI to visualize the results, which turned
-                  out to be essential during the validation phase of the project. And i <i>love</i> making tools!
+                  out to be essential during the validation phase of the project. And i <i>love</i>{" "}
+                  making tools!
                 </PageSection>
 
                 <PageSection>
