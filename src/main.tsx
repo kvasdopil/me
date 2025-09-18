@@ -6,6 +6,17 @@ import App from "./App.tsx";
 import InstabeeFleetDashboard from "./projects/InstabeeFleetDashboard.tsx";
 import InstabeeGeospatialRanking from "./projects/InstabeeGeospatialRanking.tsx";
 
+// Handle GitHub Pages SPA redirect
+const handleGitHubPagesRedirect = () => {
+  const l = window.location;
+  if (l.search.startsWith('?/')) {
+    const decodedPath = l.search.slice(2).replace(/~and~/g, '&');
+    window.history.replaceState(null, '', l.pathname + decodedPath + l.hash);
+  }
+};
+
+handleGitHubPagesRedirect();
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
