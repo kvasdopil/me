@@ -20,6 +20,7 @@ type TimelineItemData = {
   description?: string;
   startup?: boolean;
   hobby?: boolean;
+  pairWithNext?: boolean;
   bullets: BulletItem[];
   isLast?: boolean;
   badgeAboveDot?: string;
@@ -149,7 +150,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items, base }) => {
   for (let i = 0; i < items.length; i++) {
     const current = items[i];
     const next = items[i + 1];
-    if (current.side === "left" && next && next.side === "right") {
+    if (current.pairWithNext && current.side === "left" && next && next.side === "right") {
       rows.push(
         <TimelineEntry
           key={`${current.title}-${next.title}`}

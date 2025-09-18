@@ -27,6 +27,7 @@ type TimelineItemData = {
   description?: string;
   startup?: boolean;
   hobby?: boolean;
+  pairWithNext?: boolean;
   bullets: BulletItem[];
   isLast?: boolean;
   badgeAboveDot?: string;
@@ -127,6 +128,7 @@ function App() {
       link: "https://garbage.guskov.dev",
       linkText: "Play",
       hobby: true,
+      pairWithNext: true,
       description:
         "My son was obsessed with garbage trucks, so when OpenAI released a new multimodal model I took it for a spin to create a little tablet game for him.",
       tags: ["Three.js", "ImageMagick", "Phaser.js", "GameDev"],
