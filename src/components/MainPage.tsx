@@ -186,22 +186,16 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({ item, addTopMargin
         {item.bullets.map((b, i) => (
           <li
             key={i}
-            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${
-              b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
-            }`}
+            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
+              }`}
           >
-            {b.text}
             {b.id ? (
-              <>
-                {"\u00A0"}
-                <a
-                  href={`${base}project/${b.id}`}
-                  className="inline text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap"
-                >
-                  more...
-                </a>
-              </>
-            ) : null}
+              <a
+                href={`${base}project/${b.id}`}
+              >
+                {b.text}{"\u00A0"}<span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">more...</span>
+              </a>
+            ) : b.text}
           </li>
         ))}
       </ul>
@@ -229,22 +223,17 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({ item, addTopMargin
         {item.bullets.map((b, i) => (
           <li
             key={i}
-            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${
-              b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
-            }`}
+            className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
+              }`}
           >
-            {b.text}
             {b.id ? (
-              <>
-                {"\u00A0"}
-                <a
-                  href={`${base}project/${b.id}`}
-                  className="inline text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap"
-                >
-                  more...
-                </a>
-              </>
-            ) : null}
+              <a
+                href={`${base}project/${b.id}`}
+                className=" whitespace-nowrap"
+              >
+                {b.text}{"\u00A0"}<span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">more...</span>
+              </a>
+            ) : b.text}
           </li>
         ))}
       </ul>

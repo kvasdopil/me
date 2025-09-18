@@ -48,15 +48,18 @@ export default function InstabeeFleetDashboard() {
                   Turns out, the team really liked it. They had been discussing a similar idea for
                   years but couldn't get it moving past the meetings. My little prototype unblocked
                   the project, and together we started shaping it into a proper fleet management
-                  dashboard. It wasn't just about the tool - it was about showing how a simple
+                  dashboard.
+                </PageSection>
+
+                <PageSection>
+                  So it wasn't just about the tool - it was about showing how a simple
                   experiment can spark collaboration and get everyone moving in the same direction.
                 </PageSection>
 
                 <PageSection>
-                  For me, this project wasn't only about solving a problem, but also about showing
-                  the value of quick iterations and side projects. I like bringing people along,
-                  building momentum, and proving that even small ideas can turn into something the
-                  whole team is proud of.
+                  In the end, the ultimate goal of this project was to demonstrate the value of quick iterations and side projects.
+                  I like bringing people along, building momentum, and proving that even small ideas can turn into
+                  something the whole team is proud of.
                 </PageSection>
 
                 <PageSection>
