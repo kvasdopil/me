@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL;
 
 Dedicated project pages provide in-depth information about specific work experiences:
 
-- **Fleet Management Dashboard**: Internal tools for monitoring parcel lockers with real-time data visualization
+- **Fleet Management Dashboard**: Internal tools for monitoring parcel lockers with real-time data visualization and interactive map showing supermarket clustering
 - **Geospatial Ranking**: Automated ranking system using OpenStreetMap data for improved logistics
 
 Each project page includes:
@@ -40,6 +40,20 @@ Each project page includes:
 - Technology stack with visual tags
 - Implementation details and challenges solved
 - Performance optimizations and outcomes
+- **Interactive Maps**: Real-time visualization of geographic data with clustering
+
+#### 🗺️ **Map Visualization Features**
+
+The Fleet Management Dashboard includes advanced map functionality:
+
+- **OSM Data Integration**: Processes OpenStreetMap supermarket data into clustered GeoJSON
+- **Smart Clustering**: Groups nearby supermarkets within 500m radius using Haversine distance calculation
+- **Color-Coded Operators**:
+  - 🟢 **Green**: Coop supermarkets
+  - 🔴 **Red**: ICA supermarkets
+  - 🟠 **Orange**: Mixed clusters (both operators)
+- **Interactive Labels**: Count numbers displayed on cluster centers
+- **Data Processing**: CLI tools for converting OSM JSON to optimized GeoJSON
 
 Project pages are self-contained components in `src/projects/` directory, each managing its own content and metadata.
 
@@ -49,15 +63,21 @@ Project pages are self-contained components in `src/projects/` directory, each m
 src/
 ├── components/
 │   ├── PageComponents.tsx     # Reusable UI components (Header, Content, Section, Tag)
-│   ├── Project.tsx           # Project page router and layout
+│   ├── MapBackground.tsx      # Interactive map component with clustering
+│   ├── BackButton.tsx         # Reusable navigation button
 │   └── Tag.tsx               # Technology tag component
 ├── projects/
-│   ├── InstabeeFleetDashboard.tsx    # Fleet dashboard project page
+│   ├── InstabeeFleetDashboard.tsx    # Fleet dashboard with map visualization
 │   ├── InstabeeGeospatialRanking.tsx # Geospatial ranking project page
 │   └── index.ts                      # Project exports
+├── utils/
+│   └── osmToGeoJson.ts        # OSM data processing and clustering utilities
 ├── App.tsx                   # Main application with timeline
 ├── main.tsx                  # App entry point with routing
 └── index.css                 # Global styles
+public/
+├── supermarkets.geojson      # Processed supermarket clustering data
+└── [other assets...]
 ```
 
 ### Features
@@ -75,6 +95,15 @@ src/
 - Technical implementation details
 - Technology stack visualization
 - Performance metrics and outcomes
+
+#### 🗺️ **Interactive Maps & Data Visualization**
+
+- **MapLibre GL Integration**: High-performance web mapping with vector tiles
+- **Real-time Clustering**: Dynamic grouping of geographic data points
+- **OSM Data Processing**: Automated conversion of OpenStreetMap data to GeoJSON
+- **Color-coded Visualization**: Operator-based styling for market analysis
+- **Distance Calculations**: Haversine formula for accurate geographic clustering
+- **CLI Data Tools**: Command-line utilities for data processing workflows
 
 #### 🎨 **Modern UI/UX**
 
@@ -100,6 +129,9 @@ src/
 ### Stack
 
 - **Build**: Vite + React + TypeScript
+- **Mapping**: MapLibre GL JS for interactive web maps
+- **Data Processing**: Custom OSM to GeoJSON conversion utilities
+- **Geographic Calculations**: Haversine distance formula for clustering
 - **Styling**: Tailwind CSS v4 (`@import "tailwindcss";`)
 - **Quality**: ESLint (flat config) + Prettier
 - **Icons**: `react-icons`
@@ -181,3 +213,19 @@ Notes:
   - something really nice, like 3d graphics
 - mobile version!
 - pure terminal-like text website with emojis, super nerdy stuff!
+
+## 🗺️ **Mapping & Data Features** ✅
+
+**Implemented:**
+- Interactive map with supermarket clustering visualization
+- OSM data processing pipeline with CLI tools
+- Color-coded operator analysis (Coop/ICA market competition)
+- Real-time geographic clustering with count labels
+- Data-driven styling and performance optimizations
+
+**Future Enhancements:**
+- Additional data layers (population density, transport hubs)
+- Interactive filtering by operator or cluster size
+- Time-series animation of market expansion
+- Export functionality for processed datasets
+- Integration with more OSM data types

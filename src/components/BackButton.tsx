@@ -13,8 +13,17 @@ export default function BackButton({
 }: BackButtonProps) {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    // Use browser history back when going to home page to preserve scroll position
+    if (to === "/") {
+      navigate(-1);
+    } else {
+      navigate(to);
+    }
+  };
+
   return (
-    <button onClick={() => navigate(to)} className={className}>
+    <button onClick={handleClick} className={className}>
       ← {label}
     </button>
   );
