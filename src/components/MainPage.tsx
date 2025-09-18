@@ -146,11 +146,9 @@ interface TimelineProps {
   base: string;
 }
 
-interface TimelineItemProps extends Omit<TimelineItemData, "bullets"> {
+type TimelineItemProps = Omit<TimelineItemData, "bullets"> & {
   children?: React.ReactNode;
-}
-
-export const TimelineItem: React.FC<TimelineItemProps> = () => null;
+};
 
 interface TimelineBulletProps {
   id?: string;
@@ -158,6 +156,8 @@ interface TimelineBulletProps {
 }
 
 export const TimelineBullet: React.FC<TimelineBulletProps> = () => null;
+
+export const TimelineItem: React.FC<TimelineItemProps> = () => null;
 
 export const Timeline: React.FC<TimelineProps> = ({ children, base }) => {
   const items: TimelineItemData[] = [];
@@ -231,9 +231,9 @@ const StartupBadge = () => (
   </span>
 );
 
-const HobbyBadge = () => (
-  <span className="mr-2 rounded-full px-2 bg-blue-100 py-0.5 text-xs font-medium text-blue-500 align-middle">
-    🛠️&nbsp;hobby
+const HobbyTag = () => (
+  <span className="mr-2 rounded-full px-2 py-0.5 text-xs font-medium text-orange-400 bg-orange-100 border border-orange-400 align-middle">
+    🛠️&nbsp;Hobby project
   </span>
 );
 
@@ -249,100 +249,133 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({
   const dotClass = item.colorClass;
   const lineClass = item.colorClass;
 
-  const renderLeft = (forItem: TimelineItemData) => (
-    <div className="pl-10 md:pl-0 md:col-span-1 md:pr-12 text-left md:text-right">
-      <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
-      <div className="font-medium">{forItem.title}</div>
-      {forItem.description ? (
-        <div className="mt-1 text-sm text-gray-600">
-          {forItem.startup ? <StartupBadge /> : null}
-          {forItem.hobby ? <HobbyBadge /> : null}
-          {forItem.description}
+  const renderLeft = (forItem: TimelineItemData) => {
+    const content = (
+      <>
+        <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
+        <div className="font-medium">
+          {forItem.hobby && <HobbyTag />}
+          {forItem.title}
         </div>
-      ) : null}
-      {forItem.bullets && forItem.bullets.length > 0 ? (
-        <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
-          {forItem.bullets.map((b, i) => (
-            <li
-              key={i}
-              className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
-            >
-              {b.id ? (
-                <a href={`${base}project/${b.id}`}>
-                  {b.text}
-                  {"\u00A0"}
-                  <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
-                    more...
-                  </span>
-                </a>
-              ) : (
-                b.text
-              )}
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      {forItem.tags && forItem.tags.length ? (
-        <div className="mt-3 flex flex-wrap justify-end gap-2">
-          {forItem.tags.map((t) => (
-            <Tag key={t} label={t} />
-          ))}
-        </div>
-      ) : null}
-      {forItem.link ? (
-        <a
-          href={forItem.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-md font-semibold text-blue-500 shadow-md border-1 border-blue-500 rounded-md px-3 py-1.5 mt-4 hover:bg-blue-100 inline-block float-right"
-        >
-          {forItem.linkText}
-        </a>
-      ) : null}
-    </div>
-  );
+        {forItem.description ? (
+          <div className="mt-1 text-sm text-gray-600">
+            {forItem.startup ? <StartupBadge /> : null}
+            {forItem.description}
+          </div>
+        ) : null}
+        {forItem.bullets && forItem.bullets.length > 0 ? (
+          <ul className="mt-3 inline-block text-left list-inside list-disc text-gray-700">
+            {forItem.bullets.map((b, i) => (
+              <li
+                key={i}
+                className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
+              >
+                {b.id ? (
+                  <a href={`${base}project/${b.id}`}>
+                    {b.text}
+                    {"\u00A0"}
+                    <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
+                      more...
+                    </span>
+                  </a>
+                ) : (
+                  b.text
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {forItem.tags && forItem.tags.length ? (
+          <div className="mt-3 flex flex-wrap justify-end gap-2">
+            {forItem.tags.map((t) => (
+              <Tag key={t} label={t} />
+            ))}
+          </div>
+        ) : null}
+        {forItem.link ? (
+          <a
+            href={forItem.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-md font-semibold text-orange-400 shadow-md border-1 border-orange-400 rounded-md px-3 py-1.5 mt-4 hover:bg-orange-100 inline-block float-right"
+          >
+            {forItem.linkText}
+          </a>
+        ) : null}
+      </>
+    );
 
-  const renderRight = (forItem: TimelineItemData) => (
-    <div className="pl-10 md:pl-12 md:col-start-2">
-      <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
-      <div className="font-medium">{forItem.title}</div>
-      {forItem.description ? (
-        <div className="mt-1 text-sm text-gray-600">
-          {forItem.startup ? <StartupBadge /> : null}
-          {forItem.description}
+    return (
+      <div className="pl-10 md:pl-0 md:col-span-1 md:pr-12 text-left md:text-right">
+        {forItem.hobby ? (
+          <div className="inline-block w-fit rounded-lg border-1 border-orange-200 border-dashed bg-yellow-50 p-4 -mx-4 mb-4">
+            {content}
+          </div>
+        ) : (
+          content
+        )}
+      </div>
+    );
+  };
+
+  const renderRight = (forItem: TimelineItemData) => {
+    const content = (
+      <>
+        <div className="text-xs font-semibold text-gray-400">{forItem.period}</div>
+        <div className="font-medium">
+          {forItem.hobby && <HobbyTag />}
+          {forItem.title}
         </div>
-      ) : null}
-      {forItem.bullets && forItem.bullets.length > 0 ? (
-        <ul className="mt-3 list-inside list-disc text-gray-700">
-          {forItem.bullets.map((b, i) => (
-            <li
-              key={i}
-              className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
-            >
-              {b.id ? (
-                <a href={`${base}project/${b.id}`} className=" whitespace-nowrap">
-                  {b.text}
-                  {"\u00A0"}
-                  <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
-                    more...
-                  </span>
-                </a>
-              ) : (
-                b.text
-              )}
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      {forItem.tags && forItem.tags.length ? (
-        <div className="mt-3 flex flex-wrap gap-2">
-          {forItem.tags.map((t) => (
-            <Tag key={t} label={t} />
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
+        {forItem.description ? (
+          <div className="mt-1 text-sm text-gray-600">
+            {forItem.startup ? <StartupBadge /> : null}
+            {forItem.description}
+          </div>
+        ) : null}
+        {forItem.bullets && forItem.bullets.length > 0 ? (
+          <ul className="mt-3 list-inside list-disc text-gray-700">
+            {forItem.bullets.map((b, i) => (
+              <li
+                key={i}
+                className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${b.id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""}`}
+              >
+                {b.id ? (
+                  <a href={`${base}project/${b.id}`} className=" whitespace-nowrap">
+                    {b.text}
+                    {"\u00A0"}
+                    <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
+                      more...
+                    </span>
+                  </a>
+                ) : (
+                  b.text
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {forItem.tags && forItem.tags.length ? (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {forItem.tags.map((t) => (
+              <Tag key={t} label={t} />
+            ))}
+          </div>
+        ) : null}
+      </>
+    );
+
+    return (
+      <div className="pl-10 md:pl-12 md:col-start-2">
+        {forItem.hobby ? (
+          <div className="inline-block w-fit rounded-lg border-1 border-orange-200 border-dashed bg-yellow-50 p-4 -mx-4 mb-4">
+            {content}
+          </div>
+        ) : (
+          content
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className={containerClass}>
