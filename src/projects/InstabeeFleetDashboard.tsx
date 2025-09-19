@@ -37,23 +37,35 @@ export default function InstabeeFleetDashboard() {
 
               <PageContent>
                 <PageSection>
-                  When I started, just to get a sense of what's going on I've built a small
-                  dashboard with all the parcel lockers we managed. It showed them on a map, had
-                  some filters, search, historical values and basic reports. Nothing fancy - just a
-                  quick experiment so I could get a grip on things and understand how APIs are wired
-                  together.
+                  When I started, I figured I should probably understand what we were actually
+                  doing. Revolutionary, I know. So I built a small dashboard with all the parcel
+                  lockers we managed.
                 </PageSection>
 
                 <PageSection>
-                  Turns out, the team really liked it. They had been discussing a similar idea for
-                  years but couldn't get it moving past the meetings. My little prototype unblocked
-                  the project, and together we started shaping it into a proper fleet management
-                  dashboard.
+                  It showed them on a map, had some filters, search, historical values and basic
+                  reports. Nothing fancy - just a quick experiment so I could get a grip on things
+                  and understand how APIs are wired together. You know, the basics.
+                </PageSection>
+
+                <PageSection>Turns out, the team really liked it.</PageSection>
+
+                <PageSection>
+                  Plot twist: they had been discussing a similar idea for years but couldn't get it
+                  moving past the meetings. Classic enterprise, right? My little prototype helped to
+                  unblock the project, and together we started shaping it into a proper fleet
+                  management dashboard.
+                </PageSection>
+
+                <PageSection>
+                  Apparently, sometimes you just need to build the thing instead of talking about
+                  building the thing.
                 </PageSection>
 
                 <PageSection>
                   So it wasn't just about the tool - it was about showing how a simple experiment
-                  can spark collaboration and get everyone moving in the same direction.
+                  can spark collaboration and get everyone moving in the same direction. Also, my
+                  teammates are brilliant and just needed someone to throw the first stone.
                 </PageSection>
 
                 <PageSection>
@@ -62,6 +74,8 @@ export default function InstabeeFleetDashboard() {
                   momentum, and proving that even small ideas can turn into something the whole team
                   is proud of.
                 </PageSection>
+
+                <PageSection>Plus, building stuff is fun. Who knew?</PageSection>
 
                 <PageSection>
                   The project was done in <Tag>TypeScript</Tag> for <Tag>next.js</Tag>, using{" "}

@@ -32,23 +32,27 @@ function App() {
         photoUrl="photo.jpeg"
         base={base}
       >
-        <p>Hi there, I'm Alex!</p>
+        <p>Hey, I’m Alex.</p>
         <p>
-          For the last 20 years, my main drive has been
-          <strong className="font-semibold"> creative problem-solving</strong>. I love connecting
-          the dots between different worlds like IoT, mobile, and AI, and turning a cool "what if"
-          <strong className="font-semibold"> idea into a real-world product</strong>.
+          For about two decades now, I’ve been chasing one thing:
+          <strong className="font-semibold"> creative problem-solving</strong>. I like taking those
+          “what if” shower thoughts - IoT, mobile, AI, you name it - and shaping them into{" "}
+          <strong className="font-semibold">actual products</strong> that people can use. It’s equal
+          parts fun and terrifying, but mostly fun.
         </p>
         <p>
-          I'm at my best when tackling a tough challenge, whether that means architecting a new
-          system from the ground up or{" "}
-          <strong className="font-semibold"> mentoring teammates </strong>
-          on new tools that make everyone's workflow a little smoother.
+          Where I really hit my stride is in the middle of a gnarly challenge. Sometimes that’s
+          designing a system from scratch. Sometimes it’s{" "}
+          <strong className="font-semibold">helping teammates</strong> wrangle new tools so nobody’s
+          pulling their hair out. Either way, the goal is always the same: make things a little
+          easier, a little smarter, and ideally avoid any “why did we do this to ourselves?”
+          moments.
         </p>
         <p>
-          It all comes down to moving<strong className="font-semibold"> fast</strong>, building
-          <strong className="font-semibold"> smart</strong>, and fostering a great environment where
-          the<strong className="font-semibold"> whole team </strong>can succeed.
+          At the end of the day, it’s about moving <strong className="font-semibold">fast</strong>,
+          building <strong className="font-semibold">smart</strong>, and making sure the{" "}
+          <strong className="font-semibold">whole team </strong>
+          can shine. Because the best wins feel like an Avengers team-up, right?
         </p>
       </Header>
 
