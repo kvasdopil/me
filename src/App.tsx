@@ -19,30 +19,11 @@ import {
 function App() {
   const base = import.meta.env.BASE_URL;
 
-  const roles: string[] = [
-    "Full Stack",
-    "Mobile",
-    "IoT",
-    "Embedded Linux Developer",
-    "AI fanboy",
-    "🤖🛰️📱💻",
-  ];
-
-  // Semantic content moved to JSX
-
-  // Timeline entries moved to semantic children in JSX
-
-  // Languages will be provided as JSX children
-
-  // Hobbies will be provided as JSX children
-
-  // Bio paragraphs will be passed as children to Header
-
   return (
     <Container>
       <Header
         name="Alexey Guskov 🦸‍♂️"
-        roles={roles}
+        roles={["Full Stack", "Mobile", "IoT", "Embedded Linux Developer", "AI fanboy", "🤖🛰️📱💻"]}
         location="Stockholm, Sweden"
         email="kvasdopil@gmail.com"
         phone="+46722241995"
@@ -119,13 +100,23 @@ function App() {
             "Ubuntu Core",
           ]}
         >
-          <TimelineBullet id="instabee-fleet-dashboard">
+          <TimelineBullet
+            link="/project/instabee-fleet-dashboard"
+            linkText="More..."
+            linkIcon={false}
+            linkTarget="_self"
+          >
             Built and maintained internal tools for monitoring and managing a large device fleet.
           </TimelineBullet>
           <TimelineBullet>
             Developed and optimized backend APIs supporting core business services.
           </TimelineBullet>
-          <TimelineBullet id="instabee-geospatial-ranking">
+          <TimelineBullet
+            link="/project/instabee-geospatial-ranking"
+            linkText="More..."
+            linkIcon={false}
+            linkTarget="_self"
+          >
             Expanded and optimized geospatial services ahead of launch in a new international
             market.
           </TimelineBullet>
@@ -162,9 +153,8 @@ function App() {
           startup
           tags={["React", "TypeScript", "Leaflet", "Geospatial", "OpenStreetMap", "WebGL"]}
         >
-          <TimelineBullet>UI for AI-based track damage detection product.</TimelineBullet>
-          <TimelineBullet>
-            Web maps (Leaflet/Mapbox), WebGL, performance optimizations.
+          <TimelineBullet link="https://lnkd.in/p/dq6yaPTD" linkText="Check it out...">
+            UI for AI-based track damage detection product.
           </TimelineBullet>
           <TimelineBullet>Extensive refactoring and rapid prototyping.</TimelineBullet>
         </TimelineItem>
@@ -217,7 +207,12 @@ function App() {
             "Storybook",
           ]}
         >
-          <TimelineBullet>Joined the team to help launch the new mobile app.</TimelineBullet>
+          <TimelineBullet
+            link="https://www.nordnet.se/se/tjanster/handelsapplikationer/nordnet-app"
+            linkText="Here it is..."
+          >
+            Joined the team to help launch the new mobile app, used over a million of users now.
+          </TimelineBullet>
           <TimelineBullet>
             Built a new web UI component library and key portal sections.
           </TimelineBullet>

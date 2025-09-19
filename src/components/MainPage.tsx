@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEnvelope, FaGithub, FaFilePdf, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import Tag from "./Tag";
+import { GoLink } from "react-icons/go";
 
 // Types
 type TimelineSide = "left" | "right";
@@ -143,24 +144,40 @@ interface TimelineItemProps {
 }
 
 interface TimelineBulletProps {
-  id?: string;
   children: React.ReactNode;
+  link?: string;
+  linkText?: string;
+  linkIcon?: boolean;
+  linkTarget?: string;
 }
 
-export const TimelineBullet: React.FC<TimelineBulletProps> = ({ id, children }) => {
-  const ctx = React.useContext(TimelineContext);
+export const TimelineBullet: React.FC<TimelineBulletProps> = ({
+  children,
+  link,
+  linkText = "link...",
+  linkIcon = true,
+  linkTarget = "_blank",
+}) => {
   const isText = typeof children === "string";
   return (
     <li
-      className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${id ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
-        }`}
+      onClick={() => {
+        if (link) {
+          window.open(link, linkTarget);
+        }
+      }}
+      className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${
+        link ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
+      }`}
     >
-      {id && isText ? (
-        <a href={`${ctx?.base ?? ""}project/${id}`} className="">
+      {link && isText ? (
+        <a href={link} target={linkTarget} onClick={(e) => e.stopPropagation()}>
           {children}
           {"\u00A0"}
           <span className="text-xs align-baseline text-blue-700 hover:underline whitespace-nowrap">
-            more...
+            <div className="inline-flex items-center gap-0.5 mr-1">
+              {linkIcon ? <GoLink /> : null} {linkText}
+            </div>
           </span>
         </a>
       ) : (
