@@ -90,7 +90,7 @@ function App() {
           side="left"
           colorClass="bg-emerald-500"
           period="2025 – current"
-          title="Instabee — Full Stack Developer 📦🐝"
+          title="Instabee • Full Stack Developer 📦🐝"
           description="Parcel delivery to lockers. Best and biggest in Nordics."
           tags={[
             "React",
@@ -152,7 +152,7 @@ function App() {
           side="right"
           colorClass="bg-indigo-500"
           period="2023 – 2025"
-          title="NextML — Full Stack Developer 🧠📈"
+          title="NextML • Full Stack Developer 🧠📈"
           description="A solution to automate inspection of railroad track and wire using computer vision and machine-learning."
           startup
           tags={["React", "TypeScript", "Leaflet", "Geospatial", "OpenStreetMap", "WebGL"]}
@@ -166,7 +166,7 @@ function App() {
           side="left"
           colorClass="bg-amber-500"
           period="2017 – 2023"
-          title="Ombori Apps — Head of R&D 🧪🔬"
+          title="Ombori Apps • Head of R&D 🧪🔬"
           description="Interactive digital solutions for retail."
           startup
           tags={[
@@ -198,7 +198,7 @@ function App() {
           side="right"
           colorClass="bg-sky-500"
           period="2018 – 2020"
-          title="Nordnet — Mobile & Web Developer 📱🕸️"
+          title="Nordnet • Mobile & Web Developer 📱🕸️"
           description="Stock trading and savings application for web and mobile."
           tags={[
             "React Native",
@@ -225,7 +225,7 @@ function App() {
           side="left"
           colorClass="bg-rose-500"
           period="2005 – 2017"
-          title="Areal — Head of Software Development 🧭"
+          title="Areal • Head of Software Development 🧭"
           description="Multi-purpose solution to automate system administrators' work. A firewall, proxy, ACL, mail server, telephony, VPN, in a nice all-in-one package with a simple UI."
           startup
           badgeAboveDot="Moved to 🇸🇪 Sweden"
@@ -251,7 +251,7 @@ function App() {
       <div className="mt-8 grid gap-7 md:grid-cols-2">
         <Education
           period="2003 - 2008"
-          institution="Yaroslavl State University — Master of Computer Science"
+          institution="Yaroslavl State University • Master of Computer Science"
         />
         <div>
           <Languages>
