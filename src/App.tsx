@@ -37,23 +37,38 @@ function App() {
       <nav className="hidden lg:block fixed top-4 left-4 z-50">
         <ul onClick={onTocClick} className="space-y-1 text-base">
           <li>
-            <a href="#about" className="hover:border-b-1 border-black">About me</a>
+            <a href="#about" className="hover:border-b-1 border-black">
+              About me
+            </a>
           </li>
           <li>
-            <a href="#skills" className="hover:border-b-1 border-black">Skills</a>
+            <a href="#skills" className="hover:border-b-1 border-black">
+              Skills
+            </a>
           </li>
           <li>
-            <a href="#projects" className="hover:border-b-1 border-black">Projects</a>
+            <a href="#projects" className="hover:border-b-1 border-black">
+              Projects
+            </a>
           </li>
           <li>
-            <a href="#hobbies" className="hover:border-b-1 border-black">Hobbies</a>
+            <a href="#hobbies" className="hover:border-b-1 border-black">
+              Hobbies
+            </a>
           </li>
         </ul>
       </nav>
       <div id="about" className="scroll-mt-24">
         <Header
           name="Alexey Guskov 🦸‍♂️"
-          roles={["Full Stack", "Mobile", "IoT", "Embedded Linux Developer", "AI fanboy", "🤖🛰️📱💻"]}
+          roles={[
+            "Full Stack",
+            "Mobile",
+            "IoT",
+            "Embedded Linux Developer",
+            "AI fanboy",
+            "🤖🛰️📱💻",
+          ]}
           location="Stockholm, Sweden"
           email="kvasdopil@gmail.com"
           phone="+46722241995"
@@ -65,22 +80,22 @@ function App() {
           <p>Hey, I’m Alex.</p>
           <p>
             For about two decades now, I’ve been chasing one thing:
-            <strong className="font-semibold"> creative problem-solving</strong>. I like taking those
-            “what if” shower thoughts - IoT, mobile, AI, you name it - and shaping them into{" "}
-            <strong className="font-semibold">actual products</strong> that people can use. It’s equal
-            parts fun and terrifying, but mostly fun.
+            <strong className="font-semibold"> creative problem-solving</strong>. I like taking
+            those “what if” shower thoughts - IoT, mobile, AI, you name it - and shaping them into{" "}
+            <strong className="font-semibold">actual products</strong> that people can use. It’s
+            equal parts fun and terrifying, but mostly fun.
           </p>
           <p>
             Where I really hit my stride is in the middle of a gnarly challenge. Sometimes that’s
             designing a system from scratch. Sometimes it’s{" "}
-            <strong className="font-semibold">helping teammates</strong> wrangle new tools so nobody’s
-            pulling their hair out. Either way, the goal is always the same: make things a little
-            easier, a little smarter, and ideally avoid any “why did we do this to ourselves?”
-            moments.
+            <strong className="font-semibold">helping teammates</strong> wrangle new tools so
+            nobody’s pulling their hair out. Either way, the goal is always the same: make things a
+            little easier, a little smarter, and ideally avoid any “why did we do this to
+            ourselves?” moments.
           </p>
           <p>
-            At the end of the day, it’s about moving <strong className="font-semibold">fast</strong>,
-            building <strong className="font-semibold">smart</strong>, and making sure the{" "}
+            At the end of the day, it’s about moving <strong className="font-semibold">fast</strong>
+            , building <strong className="font-semibold">smart</strong>, and making sure the{" "}
             <strong className="font-semibold">whole team </strong>
             can shine. Because the best wins feel like an Avengers team-up, right?
           </p>
@@ -91,15 +106,16 @@ function App() {
         <Skills>
           <Skill label="🎨 Frontend & Mobile:">
             Typescript, React, React Native, Expo, Next.js, Vite, Redux, React Query, React
-            Navigation, Jest, Playwright, Storybook, Yjs CRDT, Tailwind, styled components, Websockets
+            Navigation, Jest, Playwright, Storybook, Yjs CRDT, Tailwind, styled components,
+            Websockets
           </Skill>
           <Skill label="🧰 Backend:">
-            Node.js, Python, FastAPI, Go, Express.js, MongoDB, Redis, MySQL, PostgreSQL, OAuth, gRPC,
-            Protobuf, Websockets, RabbitMQ, JWT
+            Node.js, Python, FastAPI, Go, Express.js, MongoDB, Redis, MySQL, PostgreSQL, OAuth,
+            gRPC, Protobuf, Websockets, RabbitMQ, JWT
           </Skill>
           <Skill label="🔌 IoT & Embedded:">
-            Embedded Linux, Yocto, Azure IoT Edge, Ubuntu Core, ARM, RPI, Rockchip, NXP, U-boot, OTA,
-            Chromium, Electron, Linux kernel, MDNS, UART, GPIO, SPI, MQTT, NPU, Bluetooth, CAN,
+            Embedded Linux, Yocto, Azure IoT Edge, Ubuntu Core, ARM, RPI, Rockchip, NXP, U-boot,
+            OTA, Chromium, Electron, Linux kernel, MDNS, UART, GPIO, SPI, MQTT, NPU, Bluetooth, CAN,
             Modbus, ROS2, ESP32, C++, C
           </Skill>
           <Skill label="🧪 AI & Data:">
@@ -274,7 +290,9 @@ function App() {
             ]}
             isLast
           >
-            <TimelineBullet>Internet access gateway solutions for the ex‑USSR market.</TimelineBullet>
+            <TimelineBullet>
+              Internet access gateway solutions for the ex‑USSR market.
+            </TimelineBullet>
             <TimelineBullet>
               Led the project from a prototype to mature product with large customer base.
             </TimelineBullet>
