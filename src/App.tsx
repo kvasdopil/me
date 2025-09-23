@@ -34,8 +34,8 @@ function App() {
 
   return (
     <Container>
-      <nav className="hidden lg:block fixed top-4 left-4 z-50">
-        <ul onClick={onTocClick} className="space-y-1 text-base">
+      <nav className="hidden lg:block fixed top-8 left-8 z-50">
+        <ul onClick={onTocClick} className="space-y-2 text-base">
           <li>
             <a href="#about" className="hover:border-b-1 border-black">
               About me
@@ -82,17 +82,17 @@ function App() {
             For about two decades now, I’ve been chasing one thing:
             <strong className="font-semibold"> creative problem-solving</strong>. I like taking
             those “what if” shower thoughts - IoT, mobile, AI, you name it - and shaping them into{" "}
-            <strong className="font-semibold">actual products</strong> that people can use. It’s
-            equal parts fun and terrifying, but mostly fun.
+            <strong className="font-semibold">actual products</strong> that people can use.
           </p>
+          <p>It’s equal parts fun and terrifying, but mostly fun.</p>
           <p>
-            Where I really hit my stride is in the middle of a gnarly challenge. Sometimes that’s
-            designing a system from scratch. Sometimes it’s{" "}
-            <strong className="font-semibold">helping teammates</strong> wrangle new tools so
+            Where I really hit my stride is in the middle of a challenge. Sometimes that’s designing
+            a system from scratch. Sometimes it’s
+            <strong className="font-semibold"> helping teammates </strong>wrangle new tools so
             nobody’s pulling their hair out. Either way, the goal is always the same: make things a
-            little easier, a little smarter, and ideally avoid any “why did we do this to
-            ourselves?” moments.
+            little easier, a little smarter.
           </p>
+          <p>And ideally avoid any “why did we do this to ourselves?” moments.</p>
           <p>
             At the end of the day, it’s about moving <strong className="font-semibold">fast</strong>
             , building <strong className="font-semibold">smart</strong>, and making sure the{" "}
