@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.tsx";
 import InstabeeFleetDashboard from "./projects/InstabeeFleetDashboard.tsx";
 import InstabeeGeospatialRanking from "./projects/InstabeeGeospatialRanking.tsx";
+import RobotArm from "./projects/RobotArm.tsx";
 
 // Handle GitHub Pages SPA redirect (sessionStorage variant)
 const restorePathFromSessionStorage = () => {
@@ -32,6 +33,7 @@ createRoot(document.getElementById("root")!).render(
           path="/project/instabee-geospatial-ranking"
           element={<InstabeeGeospatialRanking />}
         />
+        <Route path="/project/robot-arm" element={<RobotArm />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

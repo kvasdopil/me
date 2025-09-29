@@ -218,6 +218,7 @@ function App() {
             period="2017 – 2023"
             title="Ombori Apps • Head of R&D 🧪🔬"
             description="Interactive digital solutions for retail."
+            pairWithNext
             startup
             tags={[
               "React",
@@ -243,6 +244,24 @@ function App() {
             <TimelineBullet>
               Interactive apps with 3D/graphics, TTS, speech & image recognition.
             </TimelineBullet>
+          </TimelineItem>
+          <TimelineItem
+            side="right"
+            colorClass="bg-purple-500"
+            period="2023 – ongoing"
+            title="Robot Arm 🤖"
+            link="/project/robot-arm"
+            linkText="More..."
+            hobby
+            description="Because who wouldn't want to build one? A 3D-printed robot arm with custom servos, ROS2 integration, and a web UI for control."
+            tags={["Python", "ROS2", "Fusion 360", "Three.js", "Next.js"]}
+          >
+            <a
+              className="text-sm text-white border-b-1 hover:text-blue-100"
+              href="/project/robot-arm"
+            >
+              Read more...
+            </a>
           </TimelineItem>
           <TimelineItem
             side="right"

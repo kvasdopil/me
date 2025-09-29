@@ -257,18 +257,23 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
           : "pl-10 md:pl-12 md:col-start-2 md:col-span-1"
       }
     >
-      {hobby ? <HobbyWrapper>{content}</HobbyWrapper> : content}
+      {hobby ? <HobbyWrapper rightAlign={side === "right"}>{content}</HobbyWrapper> : content}
     </div>
   );
 };
 
-const HobbyWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+const HobbyWrapper: React.FC<{ children: React.ReactNode; rightAlign?: boolean }> = ({
+  children,
+  rightAlign,
+}) => (
   <div
-    className="inline-block rounded-lg -mx-4 mb-4 flex shadow-lg border-blue-100 w-fit flex-1 rounded-lg p-4"
+    className={`inline-block rounded-lg -mx-4 mb-4 flex shadow-lg border-blue-100 w-fit flex-1 rounded-lg p-4`}
     style={{
-      background:
-        "radial-gradient(circle at 30% -50%, #f8fafc 0%, #a7f3d0 40%, #60a5fa 80%, #f472b6 100%)",
-      // #f8fafc (zinc-50), #a7f3d0 (emerald-200), #60a5fa (blue-400), #f472b6 (pink-400)
+      background: rightAlign
+        ? // New, completely different gradient for rightAlign=true
+          "radial-gradient(circle at 80% 120%, #fdf6b2 0%, #fbbf24 40%, #f472b6 80%, #6366f1 100%)"
+        : // Original gradient for left/default
+          "radial-gradient(circle at 30% -50%, #f8fafc 0%, #a7f3d0 40%, #60a5fa 80%, #f472b6 100%)",
     }}
   >
     {children}
