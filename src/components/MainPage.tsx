@@ -201,7 +201,9 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
 }) => {
   const content = (
     <>
-      <div className="text-xs font-semibold text-gray-400">{period}</div>
+      <div className={"text-xs font-semibold " + (hobby ? " text-white" : " text-gray-400")}>
+        {period}
+      </div>
       <div className="font-medium">
         {hobby && <HobbyTag />}
         {title}
@@ -239,7 +241,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-md font-semibold text-orange-400 shadow-md border-1 border-orange-400 rounded-md px-3 py-1.5 mt-4 hover:bg-orange-100 inline-block float-right"
+          className="text-md font-semibold text-blue-100 shadow-md border-1 border-blue-100 rounded-md px-3 py-1.5 mt-4 hover:bg-[#ffffff33] inline-block float-right"
         >
           {linkText}
         </a>
@@ -255,16 +257,23 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
           : "pl-10 md:pl-12 md:col-start-2 md:col-span-1"
       }
     >
-      {hobby ? (
-        <div className="inline-block w-fit rounded-lg border-1 border-orange-200 border-dashed bg-yellow-50 p-4 -mx-4 mb-4">
-          {content}
-        </div>
-      ) : (
-        content
-      )}
+      {hobby ? <HobbyWrapper>{content}</HobbyWrapper> : content}
     </div>
   );
 };
+
+const HobbyWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div
+    className="inline-block rounded-lg -mx-4 mb-4 flex shadow-lg border-blue-100 w-fit flex-1 rounded-lg p-4"
+    style={{
+      background:
+        "radial-gradient(circle at 30% -50%, #f8fafc 0%, #a7f3d0 40%, #60a5fa 80%, #f472b6 100%)",
+      // #f8fafc (zinc-50), #a7f3d0 (emerald-200), #60a5fa (blue-400), #f472b6 (pink-400)
+    }}
+  >
+    {children}
+  </div>
+);
 
 export const Timeline: React.FC<TimelineProps> = ({ children, base }) => {
   const childArray = React.Children.toArray(children).filter(
@@ -342,7 +351,7 @@ const StartupBadge = () => (
 );
 
 const HobbyTag = () => (
-  <span className="mr-2 rounded-full px-2 py-0.5 text-xs font-medium text-orange-400 bg-orange-100 border border-orange-400 align-middle">
+  <span className="mr-2 rounded-full px-2 py-0.5 text-xs font-medium text-blue-50 bg-blue-400 align-middle">
     🛠️&nbsp;Hobby project
   </span>
 );
