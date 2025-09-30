@@ -73,7 +73,7 @@ function App() {
           email="kvasdopil@gmail.com"
           phone="+46722241995"
           githubUrl="https://github.com/kvasdopil"
-          cvUrl="cv-guskov-2025.pdf"
+          cvUrl="./cv-guskov-2025.pdf"
           photoUrl="photo.jpeg"
           base={base}
         >
