@@ -166,7 +166,7 @@ export const TimelineBullet: React.FC<TimelineBulletProps> = ({
           window.open(link, linkTarget);
         }
       }}
-      className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 ${
+      className={`transition-colors duration-200 rounded-md px-2 py-1 -mx-2 -my-1 -ml-4 pl-4 ${
         link ? "cursor-pointer hover:bg-blue-100 hover:text-blue-700" : ""
       }`}
     >
