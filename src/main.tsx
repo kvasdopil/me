@@ -7,6 +7,7 @@ import InstabeeFleetDashboard from "./projects/InstabeeFleetDashboard.tsx";
 import InstabeeGeospatialRanking from "./projects/InstabeeGeospatialRanking.tsx";
 import RobotArm from "./projects/RobotArm.tsx";
 import TgAgent from "./projects/TgAgent.tsx";
+import UiGen from "./projects/UiGen.tsx";
 
 // Handle GitHub Pages SPA redirect (sessionStorage variant)
 const restorePathFromSessionStorage = () => {
@@ -37,6 +38,7 @@ createRoot(document.getElementById("root")!).render(
         />
         <Route path="/project/robot-arm" element={<RobotArm />} />
         <Route path="/project/tg-agent" element={<TgAgent />} />
+        <Route path="/project/ui-gen" element={<UiGen />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

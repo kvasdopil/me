@@ -142,6 +142,7 @@ function App() {
             period="2025 – current"
             title="Instabee • Full Stack Developer 📦🐝"
             description="Parcel delivery to lockers. Best and biggest in Nordics."
+            pairWithNext
             tags={[
               "React",
               "TypeScript",
@@ -185,6 +186,24 @@ function App() {
               developer productivity.
             </TimelineBullet>
             <TimelineBullet>Self-proclaimed AI-ambassador and MVP fanboy.</TimelineBullet>
+          </TimelineItem>
+          <TimelineItem
+            side="right"
+            colorClass="bg-teal-500"
+            period="2025"
+            title="UI Generator 🎨"
+            link="/project/ui-gen"
+            linkText="More..."
+            hobby
+            description="Creates UI mockups and project spec from text prompts. A tool to 'spec by seeing' instead of 'spec by hoping the text makes sense.'"
+            tags={["Next.js", "Gemini AI", "Prisma", "Neon DB", "Vercel", "Cursor"]}
+          >
+            <a
+              className="text-sm text-white border-b-1 hover:text-blue-100"
+              href="/project/ui-gen"
+            >
+              Read more...
+            </a>
           </TimelineItem>
           <TimelineItem
             side="left"
