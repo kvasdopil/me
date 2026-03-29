@@ -70,7 +70,7 @@ function App() {
             "🤖🛰️📱💻",
           ]}
           location="Stockholm, Sweden"
-          email="kvasdopil@gmail.com"
+          email="lexa@guskov.dev"
           phone="+46722241995"
           githubUrl="https://github.com/kvasdopil"
           cvUrl="./cv-guskov-2025.pdf"

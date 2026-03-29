@@ -6,7 +6,7 @@ For me, building software for the last 20 years has been about one thing: creati
 
 📍 Stockholm, Sweden  
 📞 (+46) 7-2224-1995  
-✉️ kvasdopil@gmail.com
+✉️ lexa@guskov.dev
 
 ---
 
