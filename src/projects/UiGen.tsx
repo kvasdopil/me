@@ -26,10 +26,10 @@ export default function UiGen() {
               <PageContent>
                 <PageSection>
                   One thing that's been bothering me with vibe-coding tools is that you don't really
-                  see what your app will look like until you've already implemented half of it. Every
-                  prompt turns into a full build step, and suddenly you're three iterations deep
-                  wondering how you accidentally created a completely different product. (Ask me how I
-                  know.)
+                  see what your app will look like until you've already implemented half of it.
+                  Every prompt turns into a full build step, and suddenly you're three iterations
+                  deep wondering how you accidentally created a completely different product. (Ask
+                  me how I know.)
                 </PageSection>
 
                 <PageSection>
@@ -63,23 +63,24 @@ export default function UiGen() {
 
                 <PageSection>
                   You can generate a basic UI mockup from a text prompt, tweak it visually, and
-                  instantly see the clickable areas. It can auto-generate connected screens so you can
-                  explore flows without committing to any real implementation. Basically, it's a way
-                  to <strong>"spec by seeing"</strong> instead of <strong>"spec by hoping the text makes sense."</strong>
+                  instantly see the clickable areas. It can auto-generate connected screens so you
+                  can explore flows without committing to any real implementation. Basically, it's a
+                  way to <strong>"spec by seeing"</strong> instead of{" "}
+                  <strong>"spec by hoping the text makes sense."</strong>
                 </PageSection>
 
                 <PageSection>
                   When you're done, you can export the whole workspace as a ZIP of simple HTML files
                   - a clean visual reference for whatever AI tool you use next, so it has a much
-                  better chance of building a UI that actually matches what you had in mind, not what
-                  it thought you meant.
+                  better chance of building a UI that actually matches what you had in mind, not
+                  what it thought you meant.
                 </PageSection>
 
                 <PageSection>
-                  There's still a long list of things I want to add - generating screens from images,
-                  ensuring UI consistency across screens, all the usual "version 2" ambitions - but
-                  even now it helps validate ideas, refine requirements, and catch edge cases while
-                  they're still friendly and inexpensive.
+                  There's still a long list of things I want to add - generating screens from
+                  images, ensuring UI consistency across screens, all the usual "version 2"
+                  ambitions - but even now it helps validate ideas, refine requirements, and catch
+                  edge cases while they're still friendly and inexpensive.
                 </PageSection>
 
                 <PageSection>
@@ -100,9 +101,9 @@ export default function UiGen() {
                 </PageSection>
 
                 <PageSection>
-                  The project was made in <Tag>Cursor</Tag>, using <Tag>Gemini AI</Tag> under the hood,
-                  implemented with <Tag>Next.js</Tag>, hosted on <Tag>Vercel</Tag>, using <Tag>Neon DB</Tag>{" "}
-                  and <Tag>Prisma</Tag> for ORM and migrations.
+                  The project was made in <Tag>Cursor</Tag>, using <Tag>Gemini AI</Tag> under the
+                  hood, implemented with <Tag>Next.js</Tag>, hosted on <Tag>Vercel</Tag>, using{" "}
+                  <Tag>Neon DB</Tag> and <Tag>Prisma</Tag> for ORM and migrations.
                 </PageSection>
               </PageContent>
             </PageContainer>
@@ -112,4 +113,3 @@ export default function UiGen() {
     </div>
   );
 }
-

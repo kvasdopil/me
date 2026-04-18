@@ -55,12 +55,13 @@ export const Header: React.FC<HeaderProps> = ({
       />
       <div className="flex-1">
         <h1 className="text-3xl font-semibold tracking-tight">{name}</h1>
-        <div className="mt-2 text-base text-gray-700">
-          <ul className="flex flex-wrap gap-3 text-sm">
-            {roles.map((r) => (
-              <li key={r}>{r}</li>
-            ))}
-          </ul>
+        <div className="mt-2 text-sm text-gray-700">
+          {roles.map((r, i) => (
+            <React.Fragment key={r}>
+              {i > 0 && <span className="mx-2 text-gray-400">&bull;</span>}
+              <span className="whitespace-nowrap">{r}</span>
+            </React.Fragment>
+          ))}
         </div>
         <div className="mt-2 text-base text-gray-700 space-y-2">{children}</div>
         <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-gray-700">
@@ -133,6 +134,7 @@ interface TimelineItemProps {
   title: string;
   description?: string;
   startup?: boolean;
+  consultant?: boolean;
   hobby?: boolean;
   pairWithNext?: boolean;
   isLast?: boolean;
@@ -193,6 +195,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   title,
   description,
   startup,
+  consultant,
   hobby,
   tags,
   link,
@@ -211,6 +214,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
       {description ? (
         <div className="mt-1 text-sm text-gray-600">
           {startup ? <StartupBadge /> : null}
+          {consultant ? <ConsultantBadge /> : null}
           {description}
         </div>
       ) : null}
@@ -236,12 +240,15 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
           ))}
         </div>
       ) : null}
-      {side === "left" && link ? (
+      {link ? (
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-md font-semibold text-blue-100 shadow-md border-1 border-blue-100 rounded-md px-3 py-1.5 mt-4 hover:bg-[#ffffff33] inline-block float-right"
+          className={
+            "text-md font-semibold text-blue-100 shadow-md border-1 border-blue-100 rounded-md px-3 py-1.5 mt-4 hover:bg-[#ffffff33] inline-block " +
+            (side === "left" ? "float-right" : "float-left")
+          }
         >
           {linkText}
         </a>
@@ -294,17 +301,14 @@ export const Timeline: React.FC<TimelineProps> = ({ children, base }) => {
         ? current.props.isLast
         : i === childArray.length - 1;
 
-    if (
-      current.props.pairWithNext &&
-      current.props.side === "left" &&
-      next &&
-      next.props.side === "right"
-    ) {
+    if (current.props.pairWithNext && next && current.props.side !== next.props.side) {
+      const leftItem = current.props.side === "left" ? current : next;
+      const rightItem = current.props.side === "right" ? current : next;
       rows.push(
         <TimelineEntry
           key={`${current.props.title}-${next.props.title}`}
-          left={current}
-          right={next}
+          left={leftItem}
+          right={rightItem}
           colorClass={current.props.colorClass}
           isLast={isLast}
           badgeAboveDot={current.props.badgeAboveDot}
@@ -352,6 +356,12 @@ interface TimelineEntryProps {
 const StartupBadge = () => (
   <span className="mr-2 rounded-full px-2 bg-red-100 py-0.5 text-xs font-medium text-red-500 align-middle">
     🚀&nbsp;startup
+  </span>
+);
+
+const ConsultantBadge = () => (
+  <span className="mr-2 rounded-full px-2 bg-violet-100 py-0.5 text-xs font-medium text-violet-600 align-middle">
+    🧳&nbsp;consultant
   </span>
 );
 
