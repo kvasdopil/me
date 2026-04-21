@@ -12,6 +12,20 @@ For me, building software for the last 20 years has been about one thing: creati
 
 ## Work Experience
 
+### Stravito, Stockholm - _Senior Full Stack Engineer (Consultant)_
+
+**Feb 2026 – current**
+
+B2B SaaS research management platform used by major international FMCG companies.
+
+- Delivered a full project for a top-tier FMCG client ahead of schedule — the team's AI-first development approach (which I helped establish) was a key factor in the speed.
+- Shipping features in React + Kotlin (picked up Kotlin from scratch on this project) within a team of 5.
+- Championing AI-augmented workflows and helping teammates adopt them across the wider engineering org.
+
+Tags: React, Kotlin, TypeScript, AI-first workflows, Spec-driven
+
+---
+
 ### Instabee, Stockholm - _Full Stack Developer_
 
 **2025 – current**

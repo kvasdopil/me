@@ -66,7 +66,7 @@ function App() {
           email="lexa@guskov.dev"
           phone="+46722241995"
           githubUrl="https://github.com/kvasdopil"
-          cvUrl="./cv-guskov-2025.pdf"
+          cvUrl="./cv-guskov-2026.pdf"
           photoUrl="photo.jpeg"
           base={base}
         >
@@ -125,17 +125,21 @@ function App() {
             colorClass="bg-pink-500"
             period="Feb 2026 – current"
             title="Stravito • Senior Full Stack Engineer 🔍"
-            description="B2B SaaS research management platform for international pharmaceutical companies."
+            description="B2B SaaS research management platform used by major international FMCG companies."
             consultant
             tags={["React", "Kotlin", "TypeScript", "AI-first workflows", "Spec-driven"]}
           >
             <TimelineBullet>
-              Building features in React + Kotlin for an enterprise research platform. Engineering
-              team of 13.
+              Delivered a full project for a top-tier FMCG client ahead of schedule — the team's
+              AI-first development approach (which I helped establish) was a key factor in the speed.
             </TimelineBullet>
             <TimelineBullet>
-              Shipping features using AI-augmented workflows and establishing practices the wider
-              team can adopt.
+              Shipping features in React + Kotlin (picked up Kotlin from scratch on this project)
+              within a team of 5.
+            </TimelineBullet>
+            <TimelineBullet>
+              Championing AI-augmented workflows and helping teammates adopt them across the wider
+              engineering org.
             </TimelineBullet>
           </TimelineItem>
           <TimelineItem

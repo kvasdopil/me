@@ -30,7 +30,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/cv" element={<Navigate to="/cv-guskov-2025.pdf" replace />} />
+        <Route path="/cv" element={<Navigate to="/cv-guskov-2026.pdf" replace />} />
         <Route path="/project/instabee-fleet-dashboard" element={<InstabeeFleetDashboard />} />
         <Route
           path="/project/instabee-geospatial-ranking"
