@@ -18,9 +18,8 @@ For me, building software for the last 20 years has been about one thing: creati
 
 B2B SaaS research management platform used by major international FMCG companies.
 
-- Delivered a full project for a top-tier FMCG client ahead of schedule — the team's AI-first development approach (which I helped establish) was a key factor in the speed.
-- Shipping features in React + Kotlin (picked up Kotlin from scratch on this project) within a team of 5.
-- Championing AI-augmented workflows and helping teammates adopt them across the wider engineering org.
+- Delivered a full SaaS project on deadline with a 3-developer team, after introducing AI-assisted workflows (Claude Code, Codex) that the team credited as the difference between shipping and missing the date.
+- Had zero Kotlin experience on day one, used AI-assisted development to get productive in a React + Kotlin codebase fast enough to ship production features from week one.
 
 Tags: React, Kotlin, TypeScript, AI-first workflows, Spec-driven
 

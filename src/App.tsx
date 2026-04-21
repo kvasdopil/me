@@ -130,16 +130,13 @@ function App() {
             tags={["React", "Kotlin", "TypeScript", "AI-first workflows", "Spec-driven"]}
           >
             <TimelineBullet>
-              Delivered a full project for a top-tier FMCG client ahead of schedule — the team's
-              AI-first development approach (which I helped establish) was a key factor in the speed.
+              Delivered a full SaaS project on deadline with a 3-developer team, after introducing
+              AI-assisted workflows (Claude Code, Codex) that the team credited as the difference
+              between shipping and missing the date.
             </TimelineBullet>
             <TimelineBullet>
-              Shipping features in React + Kotlin (picked up Kotlin from scratch on this project)
-              within a team of 5.
-            </TimelineBullet>
-            <TimelineBullet>
-              Championing AI-augmented workflows and helping teammates adopt them across the wider
-              engineering org.
+              Had zero Kotlin experience on day one, used AI-assisted development to get productive
+              in a React + Kotlin codebase fast enough to ship production features from week one.
             </TimelineBullet>
           </TimelineItem>
           <TimelineItem
