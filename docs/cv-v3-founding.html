@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexey Guskov — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          accent: '#e94560',
+          dark: '#1a1a2e',
+          ink: '#1f2937',
+          muted: '#6b7280',
+          line: '#d1d5db',
+          paper: '#e5e7eb',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['"Space Grotesk"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        fontSize: {
+          xxs: ['0.625rem',  { lineHeight: '1.4' }],
+          xs:  ['0.6875rem', { lineHeight: '1.4' }],
+          sm:  ['0.8125rem', { lineHeight: '1.4' }],
+          '3xl': ['2rem', { lineHeight: '1.4' }],
+        },
+        boxShadow: {
+          page: '0 0.25rem 1.5rem rgba(0,0,0,0.12)',
+        },
+      }
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @layer components {
+    .section-head { @apply font-display text-xxs font-bold uppercase tracking-widest text-dark mb-1 flex items-center gap-2; }
+    .section-head::after { content: ''; @apply flex-1 h-px bg-line; }
+
+    .bullets { @apply list-none p-0 space-y-0.5 mt-0.5; }
+    .bullets > li { @apply text-xs pl-3 relative; }
+    .bullets > li::before {
+      content: '';
+      @apply absolute left-0 top-1 w-1 h-1 bg-accent rounded-full;
+    }
+
+    .metric-pill { @apply flex items-center gap-1.5 text-xs text-muted; }
+    .metric-pill .num { @apply font-display font-bold text-sm text-accent; }
+
+    .job { @apply mb-1.5; }
+    .job-head { @apply flex justify-between items-baseline; }
+    .job-company { @apply font-display text-sm font-bold text-dark; }
+    .job-period { @apply font-mono text-xxs text-muted; }
+    .job-role { @apply text-xs text-muted font-medium; }
+    .job-meta { @apply font-mono text-xxs text-muted; }
+    .job-alias { @apply font-mono text-xxs font-medium text-muted; }
+
+    .skill-group { @apply mb-1.5; }
+    .skill-group-name { @apply font-mono text-xxs font-medium text-accent uppercase tracking-widest; }
+    .skill-group-items { @apply text-xs; }
+
+    .project { @apply mb-1; }
+    .project-name { @apply font-display text-sm font-semibold text-dark; }
+    .project-desc { @apply text-xs; }
+    .project-tech { @apply font-mono text-xxs text-accent; }
+  }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: white; }
+    .page-box { margin: 0 !important; box-shadow: none !important; }
+    .print-exact {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body class="font-sans text-ink bg-paper antialiased">
+
+<div class="page-box w-[210mm] min-h-[297mm] my-5 mx-auto bg-white shadow-page relative overflow-hidden">
+
+  <div class="print-exact absolute top-0 left-0 w-1.5 h-full bg-accent z-10"></div>
+
+  <div class="print-exact absolute top-0 left-0 w-[7.5rem] h-[7.5rem] z-0">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+      <path d="M0 0h120v4H4v116H0V0z" fill="#1a1a2e" opacity="0.08"/>
+      <circle cx="16" cy="16" r="3" fill="#e94560" opacity="0.2"/>
+      <circle cx="30" cy="16" r="2" fill="#1a1a2e" opacity="0.1"/>
+      <circle cx="16" cy="30" r="2" fill="#1a1a2e" opacity="0.1"/>
+      <path d="M0 60h40" stroke="#1a1a2e" stroke-width="0.5" opacity="0.06"/>
+      <path d="M60 0v40" stroke="#1a1a2e" stroke-width="0.5" opacity="0.06"/>
+    </svg>
+  </div>
+
+  <div class="print-exact absolute bottom-0 right-0 w-[7.5rem] h-[7.5rem] z-0 rotate-180">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+      <path d="M0 0h120v4H4v116H0V0z" fill="#1a1a2e" opacity="0.08"/>
+      <circle cx="16" cy="16" r="3" fill="#e94560" opacity="0.2"/>
+      <circle cx="30" cy="16" r="2" fill="#1a1a2e" opacity="0.1"/>
+      <circle cx="16" cy="30" r="2" fill="#1a1a2e" opacity="0.1"/>
+      <path d="M0 60h40" stroke="#1a1a2e" stroke-width="0.5" opacity="0.06"/>
+      <path d="M60 0v40" stroke="#1a1a2e" stroke-width="0.5" opacity="0.06"/>
+    </svg>
+  </div>
+
+  <div class="print-exact absolute top-[12.5rem] right-[1.125rem] w-5 h-5 opacity-[0.07] z-0 before:content-[''] before:absolute before:w-5 before:h-0.5 before:top-[0.5625rem] before:left-0 before:bg-dark after:content-[''] after:absolute after:w-0.5 after:h-5 after:left-[0.5625rem] after:top-0 after:bg-dark"></div>
+
+  <div class="relative z-20 pt-2 pr-8 pb-2 pl-10">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-start pb-1.5 border-b border-line mb-1">
+      <div>
+        <h1 class="font-display text-3xl font-bold tracking-tighter text-dark">Alexey Guskov</h1>
+        <div class="font-mono text-xs text-accent font-medium mt-1">// Founding Engineer&#8239;&middot;&#8239;Tech Lead&#8239;&middot;&#8239;Prototype-Driven&#8239;&middot;&#8239;AI-First</div>
+        <div class="text-xs text-muted mt-1.5 max-w-[34rem]">
+          20 years shipping software across IoT, fintech, logistics, and SaaS.<br/>
+          I unstick teams by turning vague problems into working prototypes fast,
+          then hardening the best ideas into production systems. Strong across
+          frontend, backend, embedded, and platform work; increasingly focused
+          on AI-assisted developer workflows and internal tooling.
+        </div>
+      </div>
+      <div class="shrink-0 text-right text-xs text-muted pt-4 [&_a]:text-ink [&_a]:no-underline [&_a]:font-medium">
+        <div>Stockholm, Sweden</div>
+        <div>+46 7-2224-1995</div>
+        <div><a href="mailto:lexa@guskov.dev">lexa@guskov.dev</a></div>
+        <div><a href="http://guskov.dev">guskov.dev</a></div>
+        <div><a href="https://github.com/kvasdopil">github.com/kvasdopil</a></div>
+      </div>
+    </div>
+
+    <!-- METRICS -->
+    <div class="flex gap-4 py-0.5 mb-0">
+      <div class="metric-pill"><span class="num">20+</span><span>years shipping</span></div>
+      <div class="metric-pill"><span class="num">15+</span><span>years leading teams</span></div>
+      <div class="metric-pill"><span class="num">10+</span><span>greenfield products</span></div>
+      <div class="metric-pill"><span class="num">100+</span><span>enterprise customers</span></div>
+      <div class="metric-pill"><span class="num">2.4M+</span><span>bank app users</span></div>
+    </div>
+
+    <!-- TWO COLUMNS -->
+    <div class="grid grid-cols-[1fr_11.5rem] gap-5">
+
+      <!-- MAIN -->
+      <div>
+        <div class="section-head">Experience</div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-company">Stravito</span>
+            <span class="job-period">Feb 2026 &ndash; present</span>
+          </div>
+          <div class="job-role">Senior Full Stack Engineer&#8239;&middot;&#8239;Consultant&#8239;&middot;&#8239;Engineering team of 13+</div>
+          <ul class="bullets">
+            <li>Building a SaaS research management platform for international pharmaceutical companies. <span class="job-meta">React&#8239;&middot;&#8239;Kotlin</span></li>
+            <li>Shipping features using AI-augmented workflows and establishing practices the wider team can adopt. <span class="job-meta">AI-assisted workflows</span></li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="font-display text-sm font-semibold text-dark">Independent</span>
+            <span class="job-period">Oct 2025 &ndash; Jan 2026</span>
+          </div>
+          <div class="job-role">Exploring AI dev tooling, side projects, consulting opportunities</div>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-company">Instabee</span>
+            <span class="job-period">Mar &ndash; Sep 2025</span>
+          </div>
+          <div class="job-role">Senior Full Stack Engineer&#8239;&middot;&#8239;Team of 5</div>
+          <ul class="bullets">
+            <li>Worked on the next-gen parcel locker platform across a 6,000+ locker fleet operating in 7 markets. <span class="job-meta">Ubuntu Core OS&#8239;&middot;&#8239;chromium&#8239;&middot;&#8239;ARM devices</span></li>
+            <li>Team had debated a fleet management dashboard for years; shipped a working prototype in ~2 weeks that unblocked the project and evolved into the production tool. <span class="job-meta">Next.js&#8239;&middot;&#8239;maplibre&#8239;&middot;&#8239;PostgreSQL&#8239;&middot;&#8239;GCP/Helm/Terraform</span></li>
+            <li>Took ownership of an abandoned geospatial ranking service weeks before a new-country launch; automated the manual ops process using OSM/OSRM routing data and shipped a visualization UI in ~2 weeks, unblocking the launch. <span class="job-meta">Go&#8239;&middot;&#8239;Python&#8239;&middot;&#8239;Next.js</span></li>
+            <li>Adopted AI-assisted workflows on the team and ran tech meetups and knowledge-sharing sessions open to the wider engineering org. <span class="job-meta">internal agents&#8239;&middot;&#8239;custom tooling</span></li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-company">NextML</span>
+            <span class="job-period">2023 &ndash; Feb 2025</span>
+          </div>
+          <div class="job-role">Senior Full Stack Engineer&#8239;&middot;&#8239;8-person company</div>
+          <ul class="bullets">
+            <li>Brought in as the frontend and greenfield-product partner for a backend-heavy team; took DeepInspection, an ML platform for rail damage detection deployed at Trafikverket and Bane NOR, from rough prototype to a sellable product</li>
+            <li>Owned the frontend end-to-end: web maps, WebGL visualization, and low-level rendering performance work for massive geospatial datasets. <span class="job-meta">Leaflet&#8239;&middot;&#8239;WebGL&#8239;&middot;&#8239;shaders</span></li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-company">Ombori Apps <span class="job-alias">now Phygrid</span></span>
+            <span class="job-period">2020 &ndash; 2023</span>
+          </div>
+          <div class="job-role">Head of R&amp;D / Head of IoT Platform</div>
+          <ul class="bullets">
+            <li>Architected an IoT edge platform from scratch that shipped at H&amp;M NYC flagship and IKEA Middle East, 6 stores in 2.5 months. <span class="job-meta">custom Linux OS&#8239;&middot;&#8239;device management&#8239;&middot;&#8239;CI/CD pipeline&#8239;&middot;&#8239;monitoring</span></li>
+            <li>Built hardware integrations and shipped computer vision for face detection across retail deployments. <span class="job-meta">3D cameras&#8239;&middot;&#8239;RFID/NFC&#8239;&middot;&#8239;Bluetooth&#8239;&middot;&#8239;GPIO</span></li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-company">Nordnet</span>
+            <span class="job-period">2018 &ndash; 2020</span>
+          </div>
+          <div class="job-role">Mobile Developer&#8239;&middot;&#8239;Consultant</div>
+          <ul class="bullets">
+            <li>Built a React Native trading app and shared UI component library for a leading Nordic bank with 2.4M+ customers and SEK 1.2T AUM. 2-year consulting engagement in parallel with Ombori.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-company">Ombori Apps <span class="job-alias">now Phygrid</span></span>
+            <span class="job-period">2017 &ndash; 2020</span>
+          </div>
+          <div class="job-role">Mobile Developer</div>
+          <ul class="bullets">
+            <li>Shipped React Native / mobile apps for retail clients; promoted to Head of R&amp;D in 2020 to lead the IoT platform effort</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-company">Areal</span>
+            <span class="job-period">2005 &ndash; 2017</span>
+          </div>
+          <div class="job-role">Head of Software Development&#8239;&middot;&#8239;Yaroslavl, Russia&#8239;&middot;&#8239;Team of 10</div>
+          <ul class="bullets">
+            <li>Took an all-in-one internet access gateway from zero to several hundred enterprise customers across ex-USSR, with a single admin UI simple enough for non-specialist IT. <span class="job-meta">firewall&#8239;&middot;&#8239;proxy&#8239;&middot;&#8239;mail&#8239;&middot;&#8239;VoIP&#8239;&middot;&#8239;VPN</span></li>
+            <li>Founding-engineer role in a 20-person company: owned architecture, led a team of 10, handled PM and CTO-equivalent strategy while still shipping code daily</li>
+            <li>Full stack across FreeBSD/Linux, networking, Node.js, IP telephony, and web; the 12-year foundation for everything since. <span class="job-meta">SIP/Asterisk</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="mb-2">
+          <div class="section-head">Skills</div>
+          <div class="skill-group">
+            <div class="skill-group-name">AI &amp; Dev Tooling</div>
+            <div class="skill-group-items">AI-augmented workflows, LLM integration, prompt engineering, agent development, Vercel AI SDK, Google ADK, LangChain, RAG</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Frontend</div>
+            <div class="skill-group-items">React, TypeScript, Next.js, Vue, React Native, WebGL, Three.js, Mapbox</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Backend</div>
+            <div class="skill-group-items">Node.js, Python, Go, Kotlin, PostgreSQL, MongoDB, Redis</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">IoT &amp; Embedded</div>
+            <div class="skill-group-items">Ubuntu Core, Yocto, Azure IoT Edge, ARM, Linux kernel, MQTT</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Infrastructure</div>
+            <div class="skill-group-items">Docker, K8s, Terraform, AWS, Azure, GCP, GitHub Actions</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Other</div>
+            <div class="skill-group-items">OpenCV, C/C++, ROS2, Geospatial, 3D modeling, FreeBSD</div>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <div class="section-head">Education</div>
+          <div class="text-xs font-semibold text-dark">Yaroslavl State University</div>
+          <div class="text-xxs">MSc Computer Science, 2003&ndash;2008</div>
+        </div>
+
+        <div class="mb-2">
+          <div class="section-head">Languages</div>
+          <div class="text-xs">English <span>fluent</span></div>
+          <div class="text-xs">Swedish <span>basic</span></div>
+          <div class="text-xs">Russian <span>native</span></div>
+        </div>
+
+        <div class="mb-2">
+          <div class="section-head">Side Projects</div>
+          <div class="project">
+            <div class="project-name"><a href="https://guskov.dev/project/ui-gen">UI Generator</a></div>
+            <div class="project-desc">AI-powered UI mockup and spec generator</div>
+            <div class="project-tech">Next.js&#8239;&middot;&#8239;Gemini&#8239;&middot;&#8239;Prisma</div>
+          </div>
+          <div class="project">
+            <div class="project-name"><a href="https://guskov.dev/#projects">Garbage Truck Game</a></div>
+            <div class="project-desc">2D tablet game with AI-generated assets</div>
+            <div class="project-tech">Three.js&#8239;&middot;&#8239;Phaser&#8239;&middot;&#8239;OpenAI</div>
+          </div>
+          <div class="project">
+            <div class="project-name"><a href="https://guskov.dev/project/robot-arm">Robot Arm</a></div>
+            <div class="project-desc">3D-printed arm, ROS2, web control UI</div>
+            <div class="project-tech">Python&#8239;&middot;&#8239;ROS2&#8239;&middot;&#8239;Fusion 360</div>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <div class="section-head">Interests</div>
+          <div class="text-xs">DIY, 3D printing, robotics, gamedev, music production</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

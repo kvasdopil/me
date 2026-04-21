@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexey Guskov — CV</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<style>
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@v2.304/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@v2.304/fonts/webfonts/JetBrainsMono-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@v2.304/fonts/webfonts/JetBrainsMono-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@v2.304/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
+}
+</style>
+<style>
+  :root {
+    --bg:        #1f1e1c;
+    --panel:     #262522;
+    --white:     #ffffff;
+    --ink:       #e6e1d6;
+    --dim:       #9c958a;
+    --mute:      #6b655c;
+    --accent:    #d97757;
+    --accent-2:  #e8a87c;
+    --green:     #8ab754;
+    --blue:      #7aa7c7;
+    --magenta:   #c778a6;
+    --yellow:    #d4b559;
+    --border:    #3a3833;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--ink);
+    background: #100f0e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10px auto;
+    background: var(--bg);
+    padding: 5mm 5mm 5mm 5mm;
+    position: relative;
+  }
+
+  pre, .pre {
+    font-family: inherit;
+    white-space: pre;
+    margin: 0;
+    letter-spacing: 0;
+  }
+
+  .dim      { color: var(--dim); }
+  .mute     { color: var(--mute); }
+  .accent   { color: var(--accent); }
+  .accent2  { color: var(--accent-2); }
+  .green    { color: var(--green); }
+  .blue     { color: var(--blue); }
+  .mag      { color: var(--magenta); }
+  .yellow   { color: var(--yellow); }
+  .ink      { color: var(--ink); }
+  .white    { color: var(--white); }
+  .bold     { font-weight: 700; }
+  .med      { font-weight: 500; }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* welcome box */
+  .welcome {
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 4px 12px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+  .welcome .title {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* prompt line */
+  .prompt {
+    color: var(--accent);
+  }
+  .prompt .cmd { color: var(--ink); }
+  .prompt .flag { color: var(--accent-2); }
+
+  /* tool call block */
+  .call {
+    margin: 3px 0 1px;
+  }
+  .call .head {
+    color: var(--green);
+    font-weight: 700;
+  }
+  .call .head .name { color: var(--ink); font-weight: 600; }
+  .call .head .paren { color: var(--dim); }
+  .call .result {
+    padding-left: 14px;
+    position: relative;
+  }
+  .call .result::before {
+    content: '⎿';
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: var(--dim);
+  }
+
+  .bullet {
+    padding-left: 14px;
+    position: relative;
+  }
+  .bullet::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: var(--accent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 14rem;
+    gap: 0 8px;
+    align-items: start;
+  }
+
+  .identity-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 14px;
+    align-items: start;
+    padding-left: 14px;
+    position: relative;
+  }
+  .identity-row::before {
+    content: '⎿';
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: var(--dim);
+  }
+  .identity-main { margin: 0; }
+  .identity-contact { margin: 0; padding-top: 2px; }
+
+  .header-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .job-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .tags { color: var(--dim); }
+  .tag-sep { color: var(--mute); }
+
+  hr.rule {
+    border: 0;
+    border-top: 1px dashed var(--border);
+    margin: 4px 0;
+  }
+
+  .status {
+    position: absolute;
+    left: 5mm;
+    right: 5mm;
+    display: flex;
+    justify-content: space-between;
+    color: var(--mute);
+  }
+  .status .seg { display: inline-flex; gap: 6px; }
+
+  .input-box {
+    margin-top: 1em;
+    margin-bottom: 4px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    color: var(--dim);
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .input-box .caret { color: var(--accent); }
+  .input-box .blink { animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .mascot {
+    color: var(--accent);
+    
+  }
+  .mascot .eyes { color: var(--ink); }
+  .mascot .body { color: var(--accent-2); }
+
+  .welcome-v2 {
+    font-family: inherit;
+    white-space: pre;
+  }
+  .welcome-v2 .eyes { color: var(--ink); }
+  .welcome-v2 .body { color: var(--accent-2); }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: var(--bg); }
+    .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; min-height: 297mm; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- WELCOME BOX -->
+<pre class="welcome-v2"><span class="accent">╭─── </span><span class="accent bold">CV</span> <span class="dim">v26.4.21</span><span class="accent"> ──────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="accent">│</span>                                                   <span class="accent">│</span> <span class="accent">Founding Engineer · Tech Lead · Prototype-Driven · AI-First</span> <span class="accent">     │</span>
+<span class="accent">│</span>                 <span class="white bold">Alexey Guskov</span>                     <span class="accent">│</span>                                                                  <span class="accent">│</span>
+<span class="accent">│</span>                      <span class="accent">✻</span>                            <span class="accent">│</span> 20 years shipping software across IoT, fintech, logistics,       <span class="accent">│</span>
+<span class="accent">│</span>                    ╭─┴───╮   <span class="dim">&lt;- hi!</span>               <span class="accent">│</span> and SaaS. I unstick teams by turning vague problems into         <span class="accent">│</span>
+<span class="accent">│</span>                    │ <span class="eyes">◉  ◉</span> <span class="body">/</span>                       <span class="accent">│</span> working prototypes fast, then harden the best ideas into         <span class="accent">│</span>
+<span class="accent">│</span>                   <span class="body">/</span>│  <span class="eyes">▾</span>  │                        <span class="accent">│</span> production systems. Strong across frontend, backend,             <span class="accent">│</span>
+<span class="accent">│</span>                    ╰─┬─┬─╯                        <span class="accent">│</span> embedded, and platform work. Increasingly focused on             <span class="accent">│</span>
+<span class="accent">│</span>                                                   <span class="accent">│</span> AI-assisted developer workflows and internal tooling.            <span class="accent">│</span>
+<span class="accent">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span></pre>
+
+  <!-- EXPERIENCE + SIDEBAR -->
+  <div class="grid">
+
+    <!-- LEFT: PROFILE + METRICS + EXPERIENCE -->
+    <div>
+      <!-- METRICS -->
+      <div class="call">
+<pre class="head">⏺ <span class="name">Bash</span><span class="paren">(</span><span class="accent">stats --career</span><span class="paren">)</span></pre>
+      </div>
+<pre class="result" style="position:relative">  ╭──────────┬──────────┬─────────────┬─────────────┬─────────────╮
+  │   <span class="accent bold">20+</span>    │   <span class="accent bold">15+</span>    │     <span class="accent bold">10+</span>     │    <span class="accent bold">100+</span>     │    <span class="accent bold">2.4M+</span>    │
+  │  years   │  years   │  greenfield │  enterprise │     app     │
+  │ shipping │ leading  │   products  │  customers  │    users    │
+  ╰──────────┴──────────┴─────────────┴─────────────┴─────────────╯</pre>
+
+      <div class="call">
+<pre class="head">⏺ <span class="name">Glob</span><span class="paren">(</span><span class="accent">experience/*.log</span><span class="paren">)</span> <span class="dim">— 8 entries</span></pre>
+      </div>
+
+<pre class="result" style="padding-left:0; margin-top:2px">
+<span class="dim">┌─ <span class="ink bold">Stravito</span> ──────────────────────────────────────────────────── <span class="mute">Feb 2026 → present</span> ─┐ </span>
+<span class="dim">│</span> <span class="mag">Senior Full Stack Engineer · Consultant · team of 13+</span>
+<span class="dim">│</span> <span class="accent">•</span> Building a SaaS research management platform for international FMCG companies.
+<span class="dim">│</span> <span class="accent">•</span> Shipping features using AI-augmented workflows and establishing practices
+<span class="dim">│</span>   the wider team can adopt. <span class="tags">[react · kotlin · ai-assisted workflows]</span>
+
+<span class="dim">┌─ <span class="ink bold">Independent</span> ──────────────────────────────────────────────── <span class="mute">Oct 2025 → Jan 2026</span> ─┐ </span>
+<span class="dim">│</span> <span class="mag">Exploring AI dev tooling, side projects, consulting</span>
+
+<span class="dim">┌─ <span class="ink bold">Instabee</span> ──────────────────────────────────────────────────────── <span class="mute">Mar → Sep 2025</span> ─┐</span>
+<span class="dim">│</span> <span class="mag">Senior Full Stack Engineer · team of 5</span>
+<span class="dim">│</span> <span class="accent">•</span> Worked on next-gen parcel locker platform across a 6,000+ locker fleet
+<span class="dim">│</span>   operating in 7 markets. <span class="tags">[ubuntu-core · chromium · arm]</span>
+<span class="dim">│</span> <span class="accent">•</span> Team had debated a fleet-management dashboard for years; shipped a working
+<span class="dim">│</span>   prototype in ~2 weeks that unblocked the project and evolved into the
+<span class="dim">│</span>   production tool. <span class="tags">[next.js · maplibre · postgres · gcp/helm/tf]</span>
+<span class="dim">│</span> <span class="accent">•</span> Took ownership of an abandoned geospatial ranking service weeks before a
+<span class="dim">│</span>   new-country launch; automated manual ops with OSM/OSRM routing data and
+<span class="dim">│</span>   shipped a viz UI in ~2 weeks, unblocking the launch.
+<span class="dim">│</span>   <span class="tags">[go · python · next.js]</span>
+<span class="dim">│</span> <span class="accent">•</span> Adopted AI-assisted workflows on the team and ran tech meetups and
+<span class="dim">│</span>   knowledge-sharing sessions open to the wider engineering org.
+<span class="dim">│</span>   <span class="tags">[internal agents · custom tooling]</span>
+
+<span class="dim">┌─ <span class="ink bold">NextML</span> ───────────────────────────────────────────────────────── <span class="mute">2023 → Feb 2025</span> ─┐</span>
+<span class="dim">│</span> <span class="mag">Senior Full Stack Engineer · 8-person company</span>
+<span class="dim">│</span> <span class="accent">•</span> Brought in as the frontend and greenfield-product partner for a
+<span class="dim">│</span>   backend-heavy team; took DeepInspection — an ML platform for rail-damage
+<span class="dim">│</span>   detection deployed at Trafikverket and Bane NOR — from rough prototype to
+<span class="dim">│</span>   a sellable product.
+<span class="dim">│</span> <span class="accent">•</span> Owned the frontend end-to-end: web maps, WebGL visualization, and
+<span class="dim">│</span>   low-level rendering perf work for massive geospatial datasets.
+<span class="dim">│</span>   <span class="tags">[UX design · leaflet · webgl]</span>
+
+<span class="dim">┌─ <span class="ink bold">Ombori Apps</span> <span class="dim">now Phygrid</span> ──────────────────────────────────────────── <span class="mute">2020 → 2023</span> ─┐</span>
+<span class="dim">│</span> <span class="mag">Head of R&amp;D / Head of IoT Platform</span>
+<span class="dim">│</span> <span class="accent">•</span> Architected an IoT edge platform from scratch that shipped at H&amp;M NYC
+<span class="dim">│</span>   flagship and IKEA Middle East, 6 stores in 2.5 months.
+<span class="dim">│</span>   <span class="tags">[custom linux · device mgmt · ci/cd]</span>
+<span class="dim">│</span> <span class="accent">•</span> Built hardware integrations and shipped computer vision for face detection
+<span class="dim">│</span>   across retail deployments. <span class="tags">[3d cameras · rfid/nfc · bluetooth · gpio]</span>
+
+<span class="dim">┌─ <span class="ink bold">Nordnet</span> ──────────────────────────────────────────────────────────── <span class="mute">2018 → 2020</span> ─┐</span>
+<span class="dim">│</span> <span class="mag">Mobile Developer · Consultant · Engagement parallel with Ombori</span>
+<span class="dim">│</span> <span class="accent">•</span> Built a React Native trading app and shared UI component library for a
+<span class="dim">│</span>   leading Nordic bank with 2.4M+ customers and SEK 1.2T AUM.
+
+<span class="dim">┌─ <span class="ink bold">Ombori Apps</span> <span class="dim">now Phygrid</span> ──────────────────────────────────────────── <span class="mute">2017 → 2020</span> ─┐</span>
+<span class="dim">│</span> <span class="mag">Mobile Developer</span>
+<span class="dim">│</span> <span class="accent">•</span> Shipped React Native / mobile apps for retail clients; promoted to Head of
+<span class="dim">│</span>   R&amp;D in 2020 to lead the IoT platform effort.
+
+<span class="dim">┌─ <span class="ink bold">Areal</span> ────────────────────────────────────────────────────────────── <span class="mute">2005 → 2017</span> ─┐</span>
+<span class="dim">│</span> <span class="mag">Head of Software Development · Yaroslavl, RU · team of 10</span>
+<span class="dim">│</span> <span class="accent">•</span> Took an all-in-one internet-access gateway from zero to several hundred
+<span class="dim">│</span>   enterprise customers across ex-USSR, with a single admin UI simple enough
+<span class="dim">│</span>   for non-specialist IT. <span class="tags">[firewall · proxy · mail · voip · vpn]</span>
+<span class="dim">│</span> <span class="accent">•</span> Founding-engineer role in a 20-person company: owned architecture, led a
+<span class="dim">│</span>   team of 10, handled PM and CTO-equivalent strategy while still shipping code.
+<span class="dim">│</span> <span class="accent">•</span> Full stack across FreeBSD/Linux, networking, Node.js, IP telephony, and
+<span class="dim">│</span>   web; the 12-year foundation for everything since. <span class="tags">[sip/asterisk]</span> </pre>
+    </div>
+
+    <!-- RIGHT: SIDEBAR -->
+    <div>
+      <div class="call">
+<pre class="head">⏺ <span class="name">Read</span><span class="paren">(</span><span class="accent">contact.yml</span><span class="paren">)</span></pre>
+      </div>
+<pre class="result" style="padding-left:0">
+<span class="yellow">location</span><span class="dim">:</span> Stockholm, Sweden
+<span class="yellow">phone</span><span class="dim">:</span>    +46 7-2224-1995
+<span class="yellow">email</span><span class="dim">:</span>    <a href="mailto:lexa@guskov.dev">lexa@guskov.dev</a>
+<span class="yellow">web</span><span class="dim">:</span>      <a href="http://guskov.dev">guskov.dev</a>
+<span class="yellow">github</span><span class="dim">:</span>   <a href="https://github.com/kvasdopil">github.com/kvasdopil</a>
+</pre>
+
+      <div class="call" style="margin-top:14px">
+<pre class="head">⏺ <span class="name">Read</span><span class="paren">(</span><span class="accent">skills.toml</span><span class="paren">)</span></pre>
+      </div>
+<pre class="result" style="padding-left:0">
+<span class="yellow">[ai &amp; dev tooling]</span>
+ai-augmented workflows, llm
+integration, memory bank, rag,
+prompt engineering,
+agent development, 
+vercel ai sdk,
+google adk, langchain
+
+<span class="yellow">[frontend]</span>
+react, typescript, next.js, 
+vue, react native, webgl, 
+three.js, mapbox
+
+<span class="yellow">[backend]</span>
+node.js, python, go, kotlin,
+postgresql, mongodb, redis
+
+<span class="yellow">[iot &amp; embedded]</span>
+ubuntu core, yocto, azure iot
+edge, arm, linux kernel, mqtt
+
+<span class="yellow">[infrastructure]</span>
+docker, k8s, terraform, aws,
+azure, gcp, github actions
+
+<span class="yellow">[other]</span>
+opencv, c/c++, ros2, geospatial,
+3d modeling, freebsd
+</pre>
+
+      <div class="call" style="margin-top:14px">
+<pre class="head">⏺ <span class="name">Read</span><span class="paren">(</span><span class="accent">education.txt</span><span class="paren">)</span></pre>
+      </div>
+<pre class="result" style="padding-left:0">
+<span class="ink bold">Yaroslavl State University</span>
+MSc Computer Science · <span class="dim">2003–2008</span>
+</pre>
+
+      <div class="call" style="margin-top:14px">
+<pre class="head">⏺ <span class="name">Bash</span><span class="paren">(</span><span class="accent">locale -a</span><span class="paren">)</span></pre>
+      </div>
+<pre class="result" style="padding-left:0">
+  <span class="green">▰▰▰▰▰</span> english  <span class="dim">fluent</span>
+  <span class="green">▰▰</span><span class="mute">▱▱▱</span> swedish  <span class="dim">basic</span>
+  <span class="green">▰▰▰▰▰</span> russian  <span class="dim">native</span>
+</pre>
+
+      <div class="call" style="margin-top:14px">
+<pre class="head">⏺ <span class="name">Glob</span><span class="paren">(</span><span class="accent">projects/*</span><span class="paren">)</span></pre>
+      </div>
+<pre class="result" style="padding-left:0">
+<span class="accent">▸</span> <a href="https://guskov.dev/project/ui-gen"><span class="ink bold">UI Generator</span></a>
+  AI-powered UI mockup and
+  spec generator
+  <span class="tags">[next.js · gemini · prisma]</span>
+
+<span class="accent">▸</span> <a href="https://guskov.dev/#projects"><span class="ink bold">Garbage Truck Game</span></a>
+  2D tablet game with
+  AI-generated assets
+  <span class="tags">[three.js · phaser · openai]</span>
+
+<span class="accent">▸</span> <a href="https://guskov.dev/project/robot-arm"><span class="ink bold">Robot Arm</span></a>
+  3D-printed arm, ROS2,
+  web control UI
+  <span class="tags">[python · ros2 · fusion 360]</span>
+</pre>
+
+      <div class="call" style="margin-top:14px">
+<pre class="head">⏺ <span class="name">Read</span><span class="paren">(</span><span class="accent">interests</span><span class="paren">)</span></pre>
+      </div>
+<pre class="result" style="padding-left:0">
+DIY, 3D printing, robotics,
+gamedev, music production
+</pre>
+    </div>
+  </div>
+
+  <!-- INPUT BOX -->
+  <div class="input-box">
+    <span class="caret">&gt;</span>
+    <span class="dim">Try: <span class="accent2">/hire alexey</span>, <span class="accent2">/schedule interview</span>, or ask about any role above<span class="blink">█</span></span>
+  </div>
+
+  <!-- STATUS LINE -->
+  <div class="status">
+    <div class="seg">
+      <span class="accent">✻</span>
+      <span>alexey-guskov</span>
+      <span class="mute">·</span>
+      <span>role/founding-engineer</span>
+    </div>
+    <div class="seg">
+      <span>context: 20y</span>
+      <span class="mute">·</span>
+      <span>tokens: ∞</span>
+      <span class="mute">·</span>
+      <span>status: <span class="green">● available</span></span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
